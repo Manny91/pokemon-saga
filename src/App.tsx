@@ -3,13 +3,16 @@ import { Provider } from "react-redux";
 import { configureStore } from "./store";
 import styled, { ThemeProvider } from "./styled-components";
 import { theme } from "./theme";
+import PokemonsContainer from "./pokemons/pokemon.container";
 
 function App() {
   const store = configureStore();
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <PageContainer>Test</PageContainer>
+        <PageContainer>
+          <PokemonsContainer />
+        </PageContainer>
       </ThemeProvider>
     </Provider>
   );

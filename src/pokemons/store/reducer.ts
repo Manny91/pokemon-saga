@@ -1,6 +1,6 @@
 import { Pokemon } from "../../services/pokemon.service";
 import { PokemonsActions } from "./pokemons.actions";
-
+import { createSelector } from "reselect";
 export interface PokemonState {
   loading: boolean;
   error: boolean;
@@ -29,23 +29,23 @@ export default function pokemonsReducer(
       return {
         ...state,
         pokemonList: addPokemons(results),
-        isLoading: false
+        loading: false
       };
     case "[Pokemons] Perform Get Pokemons Error":
       return {
         ...state,
         error: true,
-        isLoading: false
+        loading: false
       };
     case "[Pokemons] Perform Get More Pokemons":
       return {
         ...state,
-        isLoading: true
+        loading: true
       };
     case "[Pokemons] Perform Get More Pokemons Success":
       return {
         ...state,
-        isLoading: false
+        loading: false
       };
     default:
       return state;
@@ -65,3 +65,18 @@ const getPokemonIdFromPokemonUrl = (url: string) => {
     .filter(el => !!el)
     .pop();
 };
+
+const pokemonState = (state: PokemonState): PokemonState => state;
+
+export const getPokemons = createSelector(
+  pokemonState,
+  pokemonState => pokemonState.pokemons
+);
+export const getPokemonsError = createSelector(
+  pokemonState,
+  pokemonState => pokemonState.error
+);
+export const getPokemonsLoading = createSelector(
+  pokemonState,
+  pokemonState => pokemonState.loading
+);
