@@ -2,10 +2,9 @@ import { Pokemon } from "../services/pokemon.service";
 import {
   getPokemons,
   getPokemonsError,
-  getPokemonsLoading,
-  PokemonState
+  getPokemonsLoading
 } from "./store/reducer";
-import { PokemonsDispatch } from "../store";
+import { PokemonsDispatch, AppState } from "../store";
 import { performGetPokemonsAction } from "./store/pokemons.actions";
 import { connect } from "react-redux";
 import { Pokemons } from "./pokemons";
@@ -22,7 +21,8 @@ interface MapStateToProps {
 
 export type PokemonContainerProps = DispatchProps & MapStateToProps;
 
-function mapStateToProps(state: PokemonState): MapStateToProps {
+function mapStateToProps(state: AppState): MapStateToProps {
+  console.log("state", state);
   return {
     pokemons: getPokemons(state),
     error: getPokemonsError(state),

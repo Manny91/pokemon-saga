@@ -1,3 +1,4 @@
+import { PokemonState, initialPokemonState } from "./../pokemons/store/reducer";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { reducers } from "./reducers";
@@ -12,6 +13,9 @@ export function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
   store = createStore(
     reducers,
+    {
+      pokemonsState: initialPokemonState
+    },
     composeWithDevTools(applyMiddleware(sagaMiddleware))
   );
   sagaMiddleware.run(sagas);
@@ -19,3 +23,6 @@ export function configureStore() {
 }
 
 export type PokemonsDispatch = Dispatch<PokemonsActions>;
+export interface AppState {
+  pokemonsState: PokemonState;
+}

@@ -1,20 +1,21 @@
 import { Pokemon } from "../../services/pokemon.service";
 import { PokemonsActions } from "./pokemons.actions";
 import { createSelector } from "reselect";
+import { AppState } from "../../store";
 export interface PokemonState {
   loading: boolean;
   error: boolean;
   pokemons: Pokemon[];
 }
 
-const initialState: PokemonState = {
+export const initialPokemonState: PokemonState = {
   loading: true,
   error: false,
   pokemons: []
 };
 
 export default function pokemonsReducer(
-  state: PokemonState = initialState,
+  state: PokemonState = initialPokemonState,
   action: PokemonsActions
 ) {
   switch (action.type) {
@@ -24,11 +25,11 @@ export default function pokemonsReducer(
         loading: true
       };
     case "[Pokemons] Perform Get Pokemons Success":
-      const { results } = action.payload.data;
+      const { results } = action.payload;
 
       return {
         ...state,
-        pokemonList: addPokemons(results),
+        pokemons: addPokemons(results),
         loading: false
       };
     case "[Pokemons] Perform Get Pokemons Error":
@@ -66,17 +67,17 @@ const getPokemonIdFromPokemonUrl = (url: string) => {
     .pop();
 };
 
-const pokemonState = (state: PokemonState): PokemonState => state;
+const pokemonsState = (state: AppState): PokemonState => state.pokemonsState;
 
 export const getPokemons = createSelector(
-  pokemonState,
-  pokemonState => pokemonState.pokemons
+  pokemonsState,
+  pokemonsState => pokemonsState.pokemons
 );
 export const getPokemonsError = createSelector(
-  pokemonState,
-  pokemonState => pokemonState.error
+  pokemonsState,
+  pokemonsState => pokemonsState.error
 );
 export const getPokemonsLoading = createSelector(
-  pokemonState,
-  pokemonState => pokemonState.loading
+  pokemonsState,
+  pokemonsState => pokemonsState.loading
 );

@@ -12,5 +12,10 @@ export const Pokemons = ({
   }, [getPokemons]);
 
   console.log("pokemons", pokemons);
-  return <div>hello</div>;
+  return (
+    <div>
+      {pokemons &&
+        pokemons.map((pokemon, key) => <div key={key}>{pokemon.name}</div>)}
+    </div>
+  );
 };

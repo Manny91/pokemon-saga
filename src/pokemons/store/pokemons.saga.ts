@@ -14,6 +14,7 @@ export function* pokemonsSaga() {
 function* performGetPokemonsSaga(action: GetPokemonsAction) {
   try {
     const response = yield call(pokemonService.getPokemons, action.payload);
+    console.log("response", response);
     yield put(performGetPokemonsSuccessAction(response));
   } catch (error) {
     yield put(performGetPokemonsErrorAction(error.message));
