@@ -22,7 +22,6 @@ interface MapStateToProps {
 export type PokemonContainerProps = DispatchProps & MapStateToProps;
 
 function mapStateToProps(state: AppState): MapStateToProps {
-  console.log("state", state);
   return {
     pokemons: getPokemons(state),
     error: getPokemonsError(state),
