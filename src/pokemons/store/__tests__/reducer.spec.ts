@@ -1,5 +1,11 @@
 import { PokemonResponse, Pokemon } from "./../../../services/pokemon.service";
-import { PokemonState } from "./../reducer";
+import {
+  PokemonState,
+  getPokemons,
+  getPokemonsLoading,
+  getPokemonsError,
+  getPokemonsCount
+} from "./../reducer";
 import {
   PERFORM_GET_POKEMONS,
   GetPokemonsAction,
@@ -13,8 +19,17 @@ import {
   PERFORM_GET_MORE_POKEMONS_SUCCESS
 } from "./../pokemons.actions";
 import pokemonsReducer from "../reducer";
+import { AppState } from "../../../store";
+import { OutputSelector } from "reselect";
 
-describe("pokemonReducer", () => {
+const defaultState = {
+  loading: true,
+  error: "",
+  pokemons: [],
+  pokemonsCount: 0
+};
+
+describe("PokemonReducer", () => {
   it("Sets the expected state for performing GetPokemonsAction", () => {
     const action: GetPokemonsAction = { type: PERFORM_GET_POKEMONS };
     const expectedState = {
@@ -156,9 +171,56 @@ describe("pokemonReducer", () => {
   });
 });
 
-const defaultState = {
-  loading: true,
-  error: "",
-  pokemons: [],
-  pokemonsCount: 0
-};
+describe("PokemonSelectors", () => {
+  type expectedType = Pokemon[] | string | boolean | number;
+  interface PokemonSelectorsTestCase {
+    state: PokemonState;
+    selectorName: string;
+    selector: OutputSelector<
+      AppState,
+      expectedType,
+      (res: PokemonState) => expectedType
+    >;
+    expectedValue: expectedType;
+  }
+  const testCases: PokemonSelectorsTestCase[] = [
+    {
+      state: {
+        ...defaultState,
+        pokemons: [{ id: "1", name: "bulbasaur", url: "testUrl" }]
+      },
+      selector: getPokemons,
+      selectorName: "getPokemons",
+      expectedValue: [{ id: "1", name: "bulbasaur", url: "testUrl" }]
+    },
+    {
+      state: { ...defaultState, error: "ERROR TEST" },
+      selector: getPokemonsError,
+      selectorName: "getPokemonsError",
+      expectedValue: "ERROR TEST"
+    },
+    {
+      state: { ...defaultState, loading: true },
+      selector: getPokemonsLoading,
+      selectorName: "getPokemonsLoading",
+      expectedValue: true
+    },
+    {
+      state: { ...defaultState, pokemonsCount: 2 },
+      selectorName: "getPokemonsCount",
+      selector: getPokemonsCount,
+      expectedValue: 2
+    }
+  ];
+
+  testCases.map((testCase: PokemonSelectorsTestCase) => {
+    it(`should return the expected state for the selector ${testCase.selectorName}`, () => {
+      const actualValue = testCase.selector({
+        pokemonsState: {
+          ...testCase.state
+        }
+      });
+      expect(actualValue).toEqual(testCase.expectedValue);
+    });
+  });
+});
