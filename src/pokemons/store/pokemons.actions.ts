@@ -1,10 +1,12 @@
 import { PokemonResponse } from "../../services/pokemon.service";
 
 export const PERFORM_GET_POKEMONS = "[Pokemons] Perform Get Pokemons";
-const PERFORM_GET_POKEMONS_SUCCESS = "[Pokemons] Perform Get Pokemons Success";
-const PERFORM_GET_POKEMONS_ERROR = "[Pokemons] Perform Get Pokemons Error";
+export const PERFORM_GET_POKEMONS_SUCCESS =
+  "[Pokemons] Perform Get Pokemons Success";
+export const PERFORM_GET_POKEMONS_ERROR =
+  "[Pokemons] Perform Get Pokemons Error";
 export const PERFORM_GET_MORE_POKEMONS = "[Pokemons] Perform Get More Pokemons";
-const PERFORM_GET_MORE_POKEMONS_SUCCESS =
+export const PERFORM_GET_MORE_POKEMONS_SUCCESS =
   "[Pokemons] Perform Get More Pokemons Success";
 
 export type GetPokemonsAction = {

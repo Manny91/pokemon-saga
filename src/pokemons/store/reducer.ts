@@ -21,6 +21,7 @@ export default function pokemonsReducer(
   action: PokemonsActions
 ) {
   switch (action.type) {
+    case "[Pokemons] Perform Get More Pokemons":
     case "[Pokemons] Perform Get Pokemons":
       return {
         ...state,
@@ -39,11 +40,6 @@ export default function pokemonsReducer(
         ...state,
         error: action.payload,
         loading: false
-      };
-    case "[Pokemons] Perform Get More Pokemons":
-      return {
-        ...state,
-        loading: true
       };
     case "[Pokemons] Perform Get More Pokemons Success":
       return {

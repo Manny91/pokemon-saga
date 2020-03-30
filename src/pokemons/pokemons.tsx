@@ -52,7 +52,7 @@ const PokemonListItem = ({ name, id }: PokemonListItemProps) => {
   );
 };
 interface PokemonItemImageProps {
-  id: number;
+  id: string;
 }
 const PokemonItemImage = ({ id }: PokemonItemImageProps) => {
   const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
@@ -90,5 +90,5 @@ const PokemonImage = styled.img`
 
 interface PokemonListItemProps {
   name: string;
-  id: number;
+  id: string;
 }

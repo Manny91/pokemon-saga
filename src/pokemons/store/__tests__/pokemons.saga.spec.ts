@@ -2,7 +2,6 @@ import {
   performGetPokemonsAction,
   performGetPokemonsSuccessAction,
   performGetPokemonsErrorAction,
-  performGetMorePokemonsAction,
   performGetMorePokemonsSuccessAction
 } from "./../pokemons.actions";
 import { all, takeLatest, call, put, select } from "redux-saga/effects";
