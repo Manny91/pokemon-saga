@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PokemonContainerProps } from "./pokemon.container";
 import styled from "../styled-components";
+import { PokemonImage } from "./components/pokemonImage";
 
 export const Pokemons = ({
   getPokemons,
@@ -45,18 +46,11 @@ const PokemonListItem = ({ name, id }: PokemonListItemProps) => {
     <PokemonItemWrapper>
       <PokemonItemId> {`#${id}`}</PokemonItemId>
       <PokemonItemBody>
-        <PokemonItemImage id={id} />
+        <PokemonImage id={id} />
         <PokemonItemTitle>{name}</PokemonItemTitle>
       </PokemonItemBody>
     </PokemonItemWrapper>
   );
-};
-interface PokemonItemImageProps {
-  id: string;
-}
-const PokemonItemImage = ({ id }: PokemonItemImageProps) => {
-  const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
-  return <PokemonImage src={imageUrl} />;
 };
 
 const PokemonList = styled.ul`
@@ -82,10 +76,6 @@ const PokemonItemTitle = styled.p`
   font-size: 16px;
   text-align: center;
   text-transform: capitalize;
-`;
-
-const PokemonImage = styled.img`
-  image-rendering: pixelated;
 `;
 
 interface PokemonListItemProps {

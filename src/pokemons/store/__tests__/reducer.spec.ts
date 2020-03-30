@@ -30,6 +30,7 @@ const defaultState = {
 };
 
 describe("PokemonReducer", () => {
+  // this could be potentially changed to table tests I'll leave it for later
   it("Sets the expected state for performing GetPokemonsAction", () => {
     const action: GetPokemonsAction = { type: PERFORM_GET_POKEMONS };
     const expectedState = {
