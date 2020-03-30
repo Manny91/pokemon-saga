@@ -5,17 +5,21 @@ import {
   getPokemonsLoading
 } from "./store/reducer";
 import { PokemonsDispatch, AppState } from "../store";
-import { performGetPokemonsAction } from "./store/pokemons.actions";
+import {
+  performGetPokemonsAction,
+  performGetMorePokemonsAction
+} from "./store/pokemons.actions";
 import { connect } from "react-redux";
 import { Pokemons } from "./pokemons";
 
 interface DispatchProps {
   getPokemons(): void;
+  getMorePokemons(): void;
 }
 
 interface MapStateToProps {
   pokemons: Pokemon[];
-  error: boolean;
+  error: string;
   loading: boolean;
 }
 
@@ -30,7 +34,8 @@ function mapStateToProps(state: AppState): MapStateToProps {
 }
 
 const mapDispatchToProps = (dispatch: PokemonsDispatch): DispatchProps => ({
-  getPokemons: () => dispatch(performGetPokemonsAction())
+  getPokemons: () => dispatch(performGetPokemonsAction()),
+  getMorePokemons: () => dispatch(performGetMorePokemonsAction())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokemons);

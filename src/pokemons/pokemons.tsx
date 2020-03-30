@@ -6,22 +6,40 @@ export const Pokemons = ({
   getPokemons,
   loading,
   pokemons,
+  getMorePokemons,
   error
 }: PokemonContainerProps) => {
+  const scrollRef = React.useRef<HTMLUListElement>(null);
   useEffect(() => {
     getPokemons();
   }, [getPokemons]);
 
+  const handleScroll = (_: React.UIEvent<HTMLUListElement>) => {
+    // added default values as a null-check
+    const scrollTop = scrollRef.current?.scrollTop || 0;
+    const clientHeight = scrollRef.current?.clientHeight || 0;
+    const scrollHeight = scrollRef.current?.scrollHeight || 1;
+    if (scrollHeight - scrollTop === clientHeight) {
+      getMorePokemons();
+    }
+  };
   return (
-    <PokemonList>
-      {pokemons &&
-        pokemons.map(({ name, id }) => {
-          return <PokemonListItem key={id} name={name} id={id} />;
-        })}
-    </PokemonList>
+    <>
+      {error && <h2> {error}</h2>}
+      <PokemonList ref={scrollRef} onScroll={handleScroll}>
+        {pokemons &&
+          pokemons.map(({ name, id }) => {
+            return <PokemonListItem key={id} name={name} id={id} />;
+          })}
+      </PokemonList>
+      {loading && <LoadingItems />}
+    </>
   );
 };
 
+const LoadingItems = () => {
+  return <h2>LOADING</h2>;
+};
 const PokemonListItem = ({ name, id }: PokemonListItemProps) => {
   return (
     <PokemonItemWrapper>

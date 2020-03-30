@@ -4,14 +4,16 @@ import { createSelector } from "reselect";
 import { AppState } from "../../store";
 export interface PokemonState {
   loading: boolean;
-  error: boolean;
+  error: string;
   pokemons: Pokemon[];
+  pokemonsCount: number;
 }
 
 export const initialPokemonState: PokemonState = {
   loading: true,
-  error: false,
-  pokemons: []
+  error: "",
+  pokemons: [],
+  pokemonsCount: 0
 };
 
 export default function pokemonsReducer(
@@ -29,13 +31,13 @@ export default function pokemonsReducer(
 
       return {
         ...state,
-        pokemons: addPokemons(results),
-        loading: false
+        loading: false,
+        ...addPokemons(state.pokemons, results)
       };
     case "[Pokemons] Perform Get Pokemons Error":
       return {
         ...state,
-        error: true,
+        error: action.payload,
         loading: false
       };
     case "[Pokemons] Perform Get More Pokemons":
@@ -53,12 +55,17 @@ export default function pokemonsReducer(
   }
 }
 
-const addPokemons = (pokemons: Pokemon[]) => {
-  const pokemonsList = pokemons.map((pokemon: Pokemon) => {
-    const id = getPokemonIdFromPokemonUrl(pokemon.url);
-    return { id, ...pokemon };
-  });
-  return pokemonsList;
+const addPokemons = (
+  storedPokemons: Pokemon[],
+  pokemons: Pokemon[]
+): Partial<PokemonState> => {
+  const pokemonsList = storedPokemons.concat(
+    pokemons.map((pokemon: Pokemon) => {
+      const id = getPokemonIdFromPokemonUrl(pokemon.url);
+      return { id, ...pokemon };
+    })
+  );
+  return { pokemons: pokemonsList, pokemonsCount: pokemonsList.length };
 };
 const getPokemonIdFromPokemonUrl = (url: string) => {
   return url
@@ -80,4 +87,9 @@ export const getPokemonsError = createSelector(
 export const getPokemonsLoading = createSelector(
   pokemonsState,
   pokemonsState => pokemonsState.loading
+);
+
+export const getPokemonsCount = createSelector(
+  pokemonsState,
+  pokemonsState => pokemonsState.pokemonsCount
 );

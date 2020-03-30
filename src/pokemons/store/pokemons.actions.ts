@@ -1,7 +1,9 @@
+import { PokemonResponse } from "../../services/pokemon.service";
+
 export const PERFORM_GET_POKEMONS = "[Pokemons] Perform Get Pokemons";
 const PERFORM_GET_POKEMONS_SUCCESS = "[Pokemons] Perform Get Pokemons Success";
 const PERFORM_GET_POKEMONS_ERROR = "[Pokemons] Perform Get Pokemons Error";
-const PERFORM_GET_MORE_POKEMONS = "[Pokemons] Perform Get More Pokemons";
+export const PERFORM_GET_MORE_POKEMONS = "[Pokemons] Perform Get More Pokemons";
 const PERFORM_GET_MORE_POKEMONS_SUCCESS =
   "[Pokemons] Perform Get More Pokemons Success";
 
@@ -12,12 +14,12 @@ export type GetPokemonsAction = {
 
 export type GetPokemonsSuccessAction = {
   type: "[Pokemons] Perform Get Pokemons Success";
-  payload: any; // TODO: Type
+  payload: PokemonResponse;
 };
 
 export type GetPokemonsErrorAction = {
   type: "[Pokemons] Perform Get Pokemons Error";
-  payload: boolean;
+  payload: string;
 };
 
 export type GetMorePokemonsAction = {
@@ -43,16 +45,16 @@ export const performGetPokemonsSuccessAction = (
 });
 
 export const performGetPokemonsErrorAction = (
-  payload: boolean
+  payload: string
 ): GetPokemonsErrorAction => ({
   type: PERFORM_GET_POKEMONS_ERROR,
   payload
 });
 
-export const performMoreGetPokemonsAction = (): GetMorePokemonsAction => ({
+export const performGetMorePokemonsAction = (): GetMorePokemonsAction => ({
   type: PERFORM_GET_MORE_POKEMONS
 });
-export const performMoreGetPokemonsSuccessAction = (): GetMorePokemonsSuccessAction => ({
+export const performGetMorePokemonsSuccessAction = (): GetMorePokemonsSuccessAction => ({
   type: PERFORM_GET_MORE_POKEMONS_SUCCESS
 });
 
