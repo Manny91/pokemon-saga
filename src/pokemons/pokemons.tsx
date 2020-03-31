@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { PokemonContainerProps } from "./pokemon.container";
 import styled from "../styled-components";
-import { PokemonImage } from "./components/pokemonImage";
+import { PokemonListItem } from "./components/pokemon-list-item/pokemon-list-item";
+import { PokemonLoadingItem } from "./components/pokemon-loading-item/pokemon-loading-item";
+import { PokemonDetail } from "./components/pokemon-detail/pokemon-detail";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 
 export const Pokemons = ({
   getPokemons,
@@ -25,60 +28,35 @@ export const Pokemons = ({
     }
   };
   return (
-    <>
-      {error && <h2> {error}</h2>}
-      <PokemonList ref={scrollRef} onScroll={handleScroll}>
-        {pokemons &&
-          pokemons.map(({ name, id }) => {
-            return <PokemonListItem key={id} name={name} id={id} />;
-          })}
-      </PokemonList>
-      {loading && <LoadingItems />}
-    </>
+    <PokemonsPage>
+      <Left>
+        {error && <h2> {error}</h2>}
+        <PokemonList ref={scrollRef} onScroll={handleScroll}>
+          {pokemons &&
+            pokemons.map(({ name, id }) => {
+              return <PokemonListItem key={id} name={name} id={id} />;
+            })}
+        </PokemonList>
+        {loading && <PokemonLoadingItem />}
+      </Left>
+      <Right>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/:name/" component={PokemonDetail} />
+          </Switch>
+        </BrowserRouter>
+      </Right>
+    </PokemonsPage>
   );
 };
+const PokemonsPage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-const LoadingItems = () => {
-  return <h2>LOADING</h2>;
-};
-const PokemonListItem = ({ name, id }: PokemonListItemProps) => {
-  return (
-    <PokemonItemWrapper>
-      <PokemonItemId> {`#${id}`}</PokemonItemId>
-      <PokemonItemBody>
-        <PokemonImage id={id} />
-        <PokemonItemTitle>{name}</PokemonItemTitle>
-      </PokemonItemBody>
-    </PokemonItemWrapper>
-  );
-};
-
+const Left = styled.section``;
+const Right = styled(Left)``;
 const PokemonList = styled.ul`
   height: 500px;
   overflow: auto;
 `;
-
-const PokemonItemWrapper = styled.li`
-  display: flex;
-  flex-direction: row;
-  border: 2px solid black;
-`;
-
-const PokemonItemId = styled.p`
-  font-size: 20px;
-  padding: ${props => props.theme.spacing.sm};
-`;
-const PokemonItemBody = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-const PokemonItemTitle = styled.p`
-  font-size: 16px;
-  text-align: center;
-  text-transform: capitalize;
-`;
-
-interface PokemonListItemProps {
-  name: string;
-  id: string;
-}
