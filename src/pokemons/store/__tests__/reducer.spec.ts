@@ -22,11 +22,14 @@ import pokemonsReducer from "../reducer";
 import { AppState } from "../../../store";
 import { OutputSelector } from "reselect";
 
-const defaultState = {
+const defaultState: PokemonState = {
   loading: true,
   error: "",
   pokemons: [],
-  pokemonsCount: 0
+  pokemonsCount: 0,
+  loadingDetail: false,
+  pokemonsDetail: {},
+  pokemonSelectedId: ""
 };
 
 describe("PokemonReducer", () => {
@@ -87,7 +90,10 @@ describe("PokemonReducer", () => {
       loading: true,
       error: "",
       pokemonsCount: 1,
-      pokemons: pokemonsState
+      pokemons: pokemonsState,
+      pokemonSelectedId: "",
+      pokemonsDetail: {},
+      loadingDetail: false
     };
 
     const payload: PokemonResponse = {

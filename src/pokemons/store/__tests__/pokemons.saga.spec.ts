@@ -2,13 +2,15 @@ import {
   performGetPokemonsAction,
   performGetPokemonsSuccessAction,
   performGetPokemonsErrorAction,
-  performGetMorePokemonsSuccessAction
+  performGetMorePokemonsSuccessAction,
+  PERFORM_GET_POKEMON_DETAIL
 } from "./../pokemons.actions";
 import { all, takeLatest, call, put, select } from "redux-saga/effects";
 import {
   pokemonsSaga,
   performGetPokemonsSaga,
-  performGetMorePokemonsSaga
+  performGetMorePokemonsSaga,
+  performGetPokemonDetailsSaga
 } from "../pokemons.saga";
 import {
   PERFORM_GET_POKEMONS,
@@ -22,7 +24,8 @@ describe("PokemonSagas", () => {
     const generator = pokemonsSaga();
     const expectedYield = all([
       takeLatest(PERFORM_GET_POKEMONS, performGetPokemonsSaga),
-      takeLatest(PERFORM_GET_MORE_POKEMONS, performGetMorePokemonsSaga)
+      takeLatest(PERFORM_GET_MORE_POKEMONS, performGetMorePokemonsSaga),
+      takeLatest(PERFORM_GET_POKEMON_DETAIL, performGetPokemonDetailsSaga)
     ]);
     const actualYield = generator.next().value;
     expect(actualYield).toEqual(expectedYield);
