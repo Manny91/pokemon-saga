@@ -13,9 +13,6 @@ export function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
   store = createStore(
     reducers,
-    {
-      pokemonsState: initialPokemonState
-    },
     composeWithDevTools(applyMiddleware(sagaMiddleware))
   );
   sagaMiddleware.run(sagas);

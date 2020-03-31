@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { PokemonContainerProps } from "./pokemon.container";
 import styled from "../styled-components";
 import { PokemonListItem } from "./components/pokemon-list-item/pokemon-list-item";
-import { PokemonLoadingItem } from "./components/pokemon-loading-item/pokemon-loading-item";
-import { PokemonDetail } from "./components/pokemon-detail/pokemon-detail";
-import { Route, BrowserRouter, Switch } from "react-router-dom";
+import PokemonDetailContainer from "./components/pokemon-detail/pokemons-detail.container";
+import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 
 export const Pokemons = ({
   getPokemons,
@@ -29,23 +28,26 @@ export const Pokemons = ({
   };
   return (
     <PokemonsPage>
-      <Left>
-        {error && <h2> {error}</h2>}
-        <PokemonList ref={scrollRef} onScroll={handleScroll}>
-          {pokemons &&
-            pokemons.map(({ name, id }) => {
-              return <PokemonListItem key={id} name={name} id={id} />;
-            })}
-        </PokemonList>
-        {loading && <PokemonLoadingItem />}
-      </Left>
-      <Right>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Left>
+          {error && <h2> {error}</h2>}
+          <PokemonList ref={scrollRef} onScroll={handleScroll}>
+            {pokemons &&
+              pokemons.map(({ name, id }) => {
+                return (
+                  <StyledLink key={id} to={`/pokemon/${id}/`}>
+                    <PokemonListItem name={name} id={id} />
+                  </StyledLink>
+                );
+              })}
+          </PokemonList>
+        </Left>
+        <Right>
           <Switch>
-            <Route path="/:name/" component={PokemonDetail} />
+            <Route path="/pokemon/:id/" component={PokemonDetailContainer} />
           </Switch>
-        </BrowserRouter>
-      </Right>
+        </Right>
+      </BrowserRouter>
     </PokemonsPage>
   );
 };
@@ -54,6 +56,9 @@ const PokemonsPage = styled.div`
   flex-direction: column;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 const Left = styled.section``;
 const Right = styled(Left)``;
 const PokemonList = styled.ul`
