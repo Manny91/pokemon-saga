@@ -4,7 +4,8 @@ import { AppState, PokemonsDispatch } from "../../../store";
 import {
   performGetPokemonDetailAction,
   selectPokemonByIdAction,
-  performGetPokemonMoveAction
+  performGetPokemonMoveAction,
+  selectMoveByNameAction
 } from "../../store/pokemons.actions";
 import { PokemonDetail as Pokemon } from "../../../services/pokemon.service";
 import {
@@ -16,6 +17,7 @@ interface DispatchProps {
   getPokemonDetail(pokemonId: string): void;
   selectPokemon(pokemonId: string): void;
   getPokemonMove(pokemonMoveName: string): void;
+  selectMove(moveName: string): void;
 }
 
 interface MapStateToProps {
@@ -40,6 +42,9 @@ const mapDispatchToProps = (dispatch: PokemonsDispatch): DispatchProps => ({
   },
   getPokemonMove: (pokemonMoveName: string) => {
     dispatch(performGetPokemonMoveAction(pokemonMoveName));
+  },
+  selectMove: (moveName: string) => {
+    dispatch(selectMoveByNameAction(moveName));
   }
 });
 

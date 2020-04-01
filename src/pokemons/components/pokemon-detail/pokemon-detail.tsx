@@ -7,7 +7,8 @@ export const PokemonDetail = ({
   pokemon,
   loading,
   selectPokemon,
-  getPokemonMove
+  getPokemonMove,
+  selectMove
 }: PokemonDetailContainerProps) => {
   const { id } = useParams();
   useEffect(() => {
@@ -19,7 +20,9 @@ export const PokemonDetail = ({
 
   useEffect(() => {
     if (pokemon) {
-      getPokemonMove(pokemon.moves[0].move.name);
+      const moveName = pokemon.moves[0].move.name;
+      selectMove(moveName);
+      getPokemonMove(moveName);
     }
   }, [pokemon]);
   return (

@@ -19,13 +19,15 @@ export const PERFORM_GET_POKEMON_DETAIL_SUCCESS =
   "[Pokemons] Perform Get Pokemon Detail Success";
 export const PERFORM_GET_POKEMON_DETAIL_ERROR =
   "[Pokemons] Perform Get Pokemon Detail Error";
-const SELECT_POKEMON_BY_ID = "[Pokemons] Select Pokemon By Id";
+export const SELECT_POKEMON_BY_ID = "[Pokemons] Select Pokemon By Id";
 
 export const PERFORM_GET_POKEMON_MOVE = "[Pokemons] Perform Get Pokemon Move";
 export const PERFORM_GET_POKEMON_MOVE_SUCCESS =
   "[Pokemons] Perform Get Pokemon Move Success";
 export const PERFORM_GET_POKEMON_MOVE_ERROR =
   "[Pokemons] Perform Get Pokemon Move Error";
+
+export const SELECT_MOVE_BY_NAME = "[Pokemons] Select Move By Name";
 export type GetPokemonsAction = {
   type: "[Pokemons] Perform Get Pokemons";
   payload?: string;
@@ -161,6 +163,17 @@ export const performGetPokemonMoveErrorAction = (
   payload
 });
 
+export type SelectMoveByNameAction = {
+  type: "[Pokemons] Select Move By Name";
+  payload: string;
+};
+
+export const selectMoveByNameAction = (
+  payload: string
+): SelectMoveByNameAction => ({
+  type: SELECT_MOVE_BY_NAME,
+  payload
+});
 export type PokemonsActions =
   | GetPokemonsAction
   | GetPokemonsSuccessAction
@@ -173,4 +186,5 @@ export type PokemonsActions =
   | GetPokemonDetailErrorAction
   | GetPokemonMoveAction
   | GetPokemonMoveSuccessAction
-  | GetPokemonMoveErrorAction;
+  | GetPokemonMoveErrorAction
+  | SelectMoveByNameAction;

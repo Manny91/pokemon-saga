@@ -24,6 +24,7 @@ export interface PokemonState {
   pokemonsMoves: PokemonsMovesDictionary<PokemonMove>;
   loadingMove: boolean;
   errorLoadingMove: string;
+  moveNameSelected: string;
 }
 
 export const initialPokemonState: PokemonState = {
@@ -36,7 +37,8 @@ export const initialPokemonState: PokemonState = {
   pokemonsDetail: {},
   pokemonsMoves: {},
   loadingMove: false,
-  errorLoadingMove: ""
+  errorLoadingMove: "",
+  moveNameSelected: ""
 };
 
 export default function pokemonsReducer(
@@ -113,6 +115,11 @@ export default function pokemonsReducer(
         loadingMove: false,
         errorLoadingMove: action.payload
       };
+    case "[Pokemons] Select Move By Name":
+      return {
+        ...state,
+        moveNameSelected: action.payload
+      };
     default:
       return state;
   }
@@ -184,4 +191,20 @@ export const getPokemonSelected = createSelector(
 export const getPokemonLoadingDetail = createSelector(
   pokemonsState,
   pokemonsState => pokemonsState.loadingDetail
+);
+
+export const getPokemonMoves = createSelector(
+  pokemonsState,
+  pokemonsState => pokemonsState.pokemonsMoves
+);
+
+export const getPokemonMoveSelected = createSelector(
+  pokemonsState,
+  pokemonsState => pokemonsState.moveNameSelected
+);
+
+export const getMoveSelected = createSelector(
+  getPokemonMoves,
+  getPokemonMoveSelected,
+  (pokemonMoves, moveName) => pokemonMoves[moveName]
 );
