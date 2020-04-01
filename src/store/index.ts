@@ -1,4 +1,4 @@
-import { PokemonState, initialPokemonState } from "./../pokemons/store/reducer";
+import { PokemonState } from "./../pokemons/store/reducer";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import { reducers } from "./reducers";

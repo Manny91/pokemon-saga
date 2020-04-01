@@ -1,4 +1,9 @@
 import {
+  PokemonSpecieDetail,
+  PokemonDetail,
+  PokemonEvolutionSpecie
+} from "./../../services/pokemon.service";
+import {
   PERFORM_GET_POKEMONS,
   GetPokemonsAction,
   performGetPokemonsSuccessAction,
@@ -12,8 +17,9 @@ import {
   performGetPokemonDetailSuccessAction
 } from "./pokemons.actions";
 import { takeLatest, call, put, select, all } from "redux-saga/effects";
-import pokemonService from "../../services/pokemon.service";
+import pokemonService, { EvolutionChain } from "../../services/pokemon.service";
 import { getPokemonsCount } from "./reducer";
+import { getIdFromUrl } from "../../utils/getIdFromUrl";
 
 export function* pokemonsSaga() {
   yield all([
@@ -43,9 +49,52 @@ export function* performGetMorePokemonsSaga() {
 
 export function* performGetPokemonDetailsSaga(action: GetPokemonDetailAction) {
   try {
-    const pokemonDetail = yield call(pokemonService.getPokemon, action.payload);
+    const pokemonDetail: PokemonDetail = yield call(
+      pokemonService.getPokemon,
+      action.payload
+    );
+
+    // we need to get the species in order to get after the evolution chain
+    const specieDetail: PokemonSpecieDetail = yield call(
+      pokemonService.getSpecie,
+      pokemonDetail.id
+    );
+    const evolutionChainId = +(
+      getIdFromUrl(specieDetail.evolution_chain.url) + ""
+    );
+    const evolutionChain: EvolutionChain = yield call(
+      pokemonService.getEvolutionChain,
+      evolutionChainId
+    );
+    const pokemonEvolutionChain = getInfoEvolutionPokemons(evolutionChain);
+    specieDetail.evolutions = pokemonEvolutionChain;
+    pokemonDetail.species = { ...specieDetail };
     yield put(performGetPokemonDetailSuccessAction(pokemonDetail));
   } catch (error) {
     yield put(performGetPokemonErrorAction(error));
   }
+}
+
+function getInfoEvolutionPokemons(
+  evolutionChain: EvolutionChain
+): PokemonEvolutionSpecie[] {
+  const chain1 = evolutionChain.chain;
+  const chain2 = chain1 && chain1.evolves_to && chain1.evolves_to[0];
+  const chain3 = chain2 && chain2.evolves_to && chain2.evolves_to[0];
+  const pokemonEvolutionChain = [
+    { ...chain1.species, id: getIdFromUrl(chain1.species.url) }
+  ];
+  if (chain2) {
+    pokemonEvolutionChain.push({
+      ...chain2.species,
+      id: getIdFromUrl(chain2.species.url)
+    });
+  }
+  if (chain3) {
+    pokemonEvolutionChain.push({
+      ...chain3.species,
+      id: getIdFromUrl(chain3.species.url)
+    });
+  }
+  return pokemonEvolutionChain;
 }

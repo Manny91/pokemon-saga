@@ -6,7 +6,10 @@ import {
   selectPokemonById
 } from "../../store/pokemons.actions";
 import { PokemonDetail as Pokemon } from "../../../services/pokemon.service";
-import { getPokemonsLoading, getPokemonSelected } from "../../store/reducer";
+import {
+  getPokemonSelected,
+  getPokemonLoadingDetail
+} from "../../store/reducer";
 
 interface DispatchProps {
   getPokemonDetail(pokemonId: string): void;
@@ -23,7 +26,7 @@ export type PokemonDetailContainerProps = DispatchProps & MapStateToProps;
 function mapStateToProps(state: AppState): MapStateToProps {
   return {
     pokemon: getPokemonSelected(state),
-    loading: getPokemonsLoading(state)
+    loading: getPokemonLoadingDetail(state)
   };
 }
 

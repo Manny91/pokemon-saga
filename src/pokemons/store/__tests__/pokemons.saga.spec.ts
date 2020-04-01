@@ -1,9 +1,16 @@
 import {
+  ChainLink,
+  EvolutionChain,
+  PokemonEvolutionSpecie
+} from "./../../../services/pokemon.service";
+import {
   performGetPokemonsAction,
   performGetPokemonsSuccessAction,
   performGetPokemonsErrorAction,
   performGetMorePokemonsSuccessAction,
-  PERFORM_GET_POKEMON_DETAIL
+  PERFORM_GET_POKEMON_DETAIL,
+  performGetPokemonDetailAction,
+  performGetPokemonDetailSuccessAction
 } from "./../pokemons.actions";
 import { all, takeLatest, call, put, select } from "redux-saga/effects";
 import {
@@ -16,7 +23,10 @@ import {
   PERFORM_GET_POKEMONS,
   PERFORM_GET_MORE_POKEMONS
 } from "../pokemons.actions";
-import pokemonService from "../../../services/pokemon.service";
+import pokemonService, {
+  PokemonDetail,
+  PokemonSpecieDetail
+} from "../../../services/pokemon.service";
 import { getPokemonsCount } from "../reducer";
 
 describe("PokemonSagas", () => {
@@ -56,9 +66,13 @@ describe("PokemonSagas", () => {
       const response = {
         count: 964,
         next: "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20",
-        previous: null,
+        previous: "previous",
         results: [
-          { name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon/1/" }
+          {
+            id: "1",
+            name: "bulbasaur",
+            url: "https://pokeapi.co/api/v2/pokemon/1/"
+          }
         ]
       };
       const expectedYield = put(performGetPokemonsSuccessAction(response));
@@ -96,6 +110,101 @@ describe("PokemonSagas", () => {
 
       const actualSuccessYield = generator.next().value;
       const expectedSuccessYield = put(performGetMorePokemonsSuccessAction());
+      expect(actualSuccessYield).toEqual(expectedSuccessYield);
+    });
+  });
+
+  describe("performGetPokemonDetail saga", () => {
+    const pokemonId = "1";
+    const action = performGetPokemonDetailAction(pokemonId);
+    const detailGenerator = performGetPokemonDetailsSaga(action);
+
+    it("should call performGetPokemonDetail with the correct pokemonId", () => {
+      const evolutionChainId = 16;
+
+      const speciesMock = {
+        evolution_chain: {
+          url: `https://pokeapi.co/api/v2/evolution-chain/${evolutionChainId}/`
+        },
+        id: 1
+      } as PokemonSpecieDetail;
+
+      const pokemonMockDetail = {
+        name: "jigglypuf",
+        species: { name: "jigglypuf", url: "test" },
+        id: 1
+      } as PokemonDetail;
+
+      // expect that first call is to get the pokemonDetail
+      const actualFirstNextYield = detailGenerator.next().value;
+      const expectedFirstYield = call(pokemonService.getPokemon, pokemonId);
+      expect(actualFirstNextYield).toEqual(expectedFirstYield);
+
+      // expect that the second call is to get the pokemonSpecie
+      const actualSecondNextYield = detailGenerator.next(
+        pokemonMockDetail as PokemonSpecieDetail &
+          PokemonDetail &
+          EvolutionChain
+      ).value;
+      const expectedSecondYield = call(pokemonService.getSpecie, 1);
+      expect(actualSecondNextYield).toEqual(expectedSecondYield);
+
+      //expect that the third call is to get EvolutionChain
+      const mockChainLink = {
+        species: {
+          name: "jigglypuff",
+          url: "https://pokeapi.co/api/v2/pokemon-species/39/"
+        }
+      } as ChainLink;
+
+      const mockEvolutionChain = {
+        id: 16,
+        chain: mockChainLink
+      } as EvolutionChain;
+
+      const actualThirdNextYield = detailGenerator.next(
+        speciesMock as PokemonSpecieDetail & PokemonDetail & EvolutionChain
+      ).value;
+      // expect that the second yield is calling EvolutionChains
+      const expectedThirdYield = call(
+        pokemonService.getEvolutionChain,
+        evolutionChainId
+      );
+
+      expect(actualThirdNextYield).toEqual(expectedThirdYield);
+
+      // expect that we're calling the successAction after
+      const actualSuccessYield = detailGenerator.next(
+        mockEvolutionChain as PokemonSpecieDetail &
+          PokemonDetail &
+          EvolutionChain
+      ).value;
+
+      const expectedPayload = {
+        name: "jigglypuf",
+        id: 1,
+        species: {
+          id: 1,
+          evolution_chain: {
+            url: `https://pokeapi.co/api/v2/evolution-chain/${evolutionChainId}/`
+          },
+          evolutions: [
+            {
+              name: "jigglypuff",
+              id: "39",
+              url: "https://pokeapi.co/api/v2/pokemon-species/39/"
+            }
+          ]
+        }
+      };
+
+      const expectedSuccessYield = put(
+        performGetPokemonDetailSuccessAction(
+          expectedPayload as PokemonDetail &
+            PokemonSpecieDetail &
+            EvolutionChain
+        )
+      );
       expect(actualSuccessYield).toEqual(expectedSuccessYield);
     });
   });

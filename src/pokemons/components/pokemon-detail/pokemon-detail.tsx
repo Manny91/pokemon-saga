@@ -14,13 +14,21 @@ export const PokemonDetail = ({
       selectPokemon(id);
       getPokemonDetail(id);
     }
-  }, [id, loading]);
+  }, [id]);
   return (
     <>
       <div>Pokemon ID: {id}</div>
       <div>{pokemon?.name}</div>
       <div>{pokemon?.height}</div>
       <div>{pokemon?.weight}</div>
+      {pokemon?.species && (
+        <div>
+          Evolutions:
+          {pokemon?.species.evolutions.map((evolution, key) => {
+            return <div key={key}> {evolution.name}</div>;
+          })}
+        </div>
+      )}
     </>
   );
 };

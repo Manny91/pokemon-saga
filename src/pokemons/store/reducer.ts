@@ -3,6 +3,7 @@ import { Pokemon } from "../../services/pokemon.service";
 import { PokemonsActions } from "./pokemons.actions";
 import { createSelector } from "reselect";
 import { AppState } from "../../store";
+import { getIdFromUrl } from "../../utils/getIdFromUrl";
 
 interface PokemonsDictionary<T> {
   [Key: string]: T;
@@ -102,18 +103,11 @@ const addPokemons = (
 ): Partial<PokemonState> => {
   const pokemonsList = storedPokemons.concat(
     pokemons.map((pokemon: Pokemon) => {
-      const id = getPokemonIdFromPokemonUrl(pokemon.url);
+      const id = getIdFromUrl(pokemon.url);
       return { id, ...pokemon };
     })
   );
   return { pokemons: pokemonsList, pokemonsCount: pokemonsList.length };
-};
-
-const getPokemonIdFromPokemonUrl = (url: string) => {
-  return url
-    .split("/")
-    .filter(el => !!el)
-    .pop();
 };
 
 const pokemonsState = (state: AppState): PokemonState => state.pokemonsState;
@@ -147,4 +141,8 @@ export const getPokemonSelected = createSelector(
   getPokemonsDetail,
   getPokemonSelectedId,
   (pokemons, pokemonSelectedId) => pokemons[pokemonSelectedId]
+);
+export const getPokemonLoadingDetail = createSelector(
+  pokemonsState,
+  pokemonsState => pokemonsState.loadingDetail
 );

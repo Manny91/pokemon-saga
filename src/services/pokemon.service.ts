@@ -38,7 +38,7 @@ export interface PokemonDetail {
   name: string;
   weight: number;
   stats: PokemonStat[];
-  species: PokemonSpecie;
+  species: PokemonSpecieDetail;
   sprites: PokemonSprites;
   types: PokemonType[];
   id: number;
@@ -53,17 +53,6 @@ export interface PokemonSprites {
   front_female?: string;
 }
 
-export interface PokemonSpecie {
-  base_happiness: number;
-  capture_rate: number;
-  flavor_text_entries: FlavourText[];
-  evolution_chain: ChainLink;
-  evolutions: Pokemon[];
-  id: number;
-  name: string;
-  url: string;
-}
-
 export interface FlavourText {
   flavor_text: string;
   language: Language;
@@ -76,17 +65,27 @@ interface Ability {
   name: string;
 }
 
-export interface ChainLink {
-  id: number;
-  chain: EvolutionChain[];
+export interface PokemonEvolutionSpecie {
+  name: string;
   url: string;
-  species: { name: string };
-  evolves_to: ChainLink[];
+  id?: string;
+}
+export interface ChainLink {
+  species: PokemonEvolutionSpecie;
+  evolves_to?: ChainLink[];
 }
 
 export interface EvolutionChain {
   id: number;
   chain: ChainLink;
+}
+export interface PokemonSpecieDetail {
+  flavor_text_entries: FlavourText[];
+  evolution_chain: { url: string };
+  evolutions: PokemonEvolutionSpecie[];
+  id: number;
+  name: string;
+  url: string;
 }
 
 async function getPokemons(params?: string): Promise<PokemonResponse> {
@@ -99,7 +98,21 @@ async function getPokemon(pokemonId: string): Promise<PokemonDetail> {
   const res = await httpClient.get(`pokemon/${pokemonId}`);
   return res.json();
 }
+
+async function getSpecie(pokemonNo: number): Promise<PokemonSpecieDetail> {
+  const res = await httpClient.get(`pokemon-species/${pokemonNo}`);
+  return res.json();
+}
+
+async function getEvolutionChain(
+  evolutionChainId: number
+): Promise<EvolutionChain> {
+  const res = await httpClient.get(`evolution-chain/${evolutionChainId}`);
+  return res.json();
+}
 export default {
   getPokemons,
-  getPokemon
+  getPokemon,
+  getSpecie,
+  getEvolutionChain
 };
