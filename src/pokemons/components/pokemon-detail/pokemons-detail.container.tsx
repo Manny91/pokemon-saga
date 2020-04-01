@@ -3,7 +3,8 @@ import { PokemonDetail } from "./pokemon-detail";
 import { AppState, PokemonsDispatch } from "../../../store";
 import {
   performGetPokemonDetailAction,
-  selectPokemonById
+  selectPokemonByIdAction,
+  performGetPokemonMoveAction
 } from "../../store/pokemons.actions";
 import { PokemonDetail as Pokemon } from "../../../services/pokemon.service";
 import {
@@ -14,6 +15,7 @@ import {
 interface DispatchProps {
   getPokemonDetail(pokemonId: string): void;
   selectPokemon(pokemonId: string): void;
+  getPokemonMove(pokemonMoveName: string): void;
 }
 
 interface MapStateToProps {
@@ -34,7 +36,10 @@ const mapDispatchToProps = (dispatch: PokemonsDispatch): DispatchProps => ({
   getPokemonDetail: (pokemonId: string) =>
     dispatch(performGetPokemonDetailAction(pokemonId)),
   selectPokemon: (pokemonId: string) => {
-    dispatch(selectPokemonById(pokemonId));
+    dispatch(selectPokemonByIdAction(pokemonId));
+  },
+  getPokemonMove: (pokemonMoveName: string) => {
+    dispatch(performGetPokemonMoveAction(pokemonMoveName));
   }
 });
 

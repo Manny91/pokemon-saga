@@ -14,7 +14,11 @@ import {
   PERFORM_GET_POKEMON_DETAIL,
   GetPokemonDetailAction,
   performGetPokemonErrorAction,
-  performGetPokemonDetailSuccessAction
+  performGetPokemonDetailSuccessAction,
+  PERFORM_GET_POKEMON_MOVE,
+  GetPokemonMoveAction,
+  performGetPokemonMoveSuccessAction,
+  performGetPokemonMoveErrorAction
 } from "./pokemons.actions";
 import { takeLatest, call, put, select, all } from "redux-saga/effects";
 import pokemonService, { EvolutionChain } from "../../services/pokemon.service";
@@ -25,7 +29,8 @@ export function* pokemonsSaga() {
   yield all([
     takeLatest(PERFORM_GET_POKEMONS, performGetPokemonsSaga),
     takeLatest(PERFORM_GET_MORE_POKEMONS, performGetMorePokemonsSaga),
-    takeLatest(PERFORM_GET_POKEMON_DETAIL, performGetPokemonDetailsSaga)
+    takeLatest(PERFORM_GET_POKEMON_DETAIL, performGetPokemonDetailsSaga),
+    takeLatest(PERFORM_GET_POKEMON_MOVE, performGetPokemonMoveSaga)
   ]);
 }
 
@@ -72,6 +77,16 @@ export function* performGetPokemonDetailsSaga(action: GetPokemonDetailAction) {
     yield put(performGetPokemonDetailSuccessAction(pokemonDetail));
   } catch (error) {
     yield put(performGetPokemonErrorAction(error));
+  }
+}
+
+export function* performGetPokemonMoveSaga(action: GetPokemonMoveAction) {
+  try {
+    const pokemonMoveName = action.payload;
+    const pokemonMove = yield call(pokemonService.getMove, pokemonMoveName);
+    yield put(performGetPokemonMoveSuccessAction(pokemonMove));
+  } catch (error) {
+    yield put(performGetPokemonMoveErrorAction(error.message));
   }
 }
 

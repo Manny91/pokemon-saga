@@ -1,4 +1,4 @@
-import { PokemonDetail } from "./../../services/pokemon.service";
+import { PokemonDetail, PokemonMove } from "./../../services/pokemon.service";
 import { Pokemon } from "../../services/pokemon.service";
 import { PokemonsActions } from "./pokemons.actions";
 import { createSelector } from "reselect";
@@ -6,6 +6,10 @@ import { AppState } from "../../store";
 import { getIdFromUrl } from "../../utils/getIdFromUrl";
 
 interface PokemonsDictionary<T> {
+  [Key: string]: T;
+}
+
+interface PokemonsMovesDictionary<T> {
   [Key: string]: T;
 }
 
@@ -17,6 +21,9 @@ export interface PokemonState {
   pokemonSelectedId: string;
   loadingDetail: boolean;
   pokemonsDetail: PokemonsDictionary<PokemonDetail>;
+  pokemonsMoves: PokemonsMovesDictionary<PokemonMove>;
+  loadingMove: boolean;
+  errorLoadingMove: string;
 }
 
 export const initialPokemonState: PokemonState = {
@@ -26,7 +33,10 @@ export const initialPokemonState: PokemonState = {
   pokemonsCount: 0,
   pokemonSelectedId: "",
   loadingDetail: false,
-  pokemonsDetail: {}
+  pokemonsDetail: {},
+  pokemonsMoves: {},
+  loadingMove: false,
+  errorLoadingMove: ""
 };
 
 export default function pokemonsReducer(
@@ -81,14 +91,43 @@ export default function pokemonsReducer(
         ...state,
         loadingDetail: false,
         error: false,
-        pokemonsDetail: updatePokemon(state.pokemonsDetail, action.payload)
+        pokemonsDetail: addPokemon(state.pokemonsDetail, action.payload)
+      };
+
+    case "[Pokemons] Perform Get Pokemon Move":
+      return {
+        ...state,
+        loadingMove: true
+      };
+
+    case "[Pokemons] Perform Get Pokemon Move Success":
+      return {
+        ...state,
+        loadingMove: false,
+        pokemonsMoves: addMove(state.pokemonsMoves, action.payload)
+      };
+
+    case "[Pokemons] Perform Get Pokemon Move Error":
+      return {
+        ...state,
+        loadingMove: false,
+        errorLoadingMove: action.payload
       };
     default:
       return state;
   }
 }
 
-const updatePokemon = (
+const addMove = (
+  storedMoves: PokemonsMovesDictionary<PokemonMove>,
+  move: PokemonMove
+): PokemonsMovesDictionary<PokemonMove> => {
+  const movesCopy = { ...storedMoves };
+  movesCopy[move.name] = move;
+  return movesCopy;
+};
+
+const addPokemon = (
   storePokemons: PokemonsDictionary<PokemonDetail>,
   pokemonDetail: PokemonDetail
 ): PokemonsDictionary<PokemonDetail> => {

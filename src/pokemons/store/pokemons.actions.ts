@@ -1,4 +1,8 @@
-import { PokemonResponse, PokemonDetail } from "../../services/pokemon.service";
+import {
+  PokemonResponse,
+  PokemonDetail,
+  PokemonMove
+} from "../../services/pokemon.service";
 
 export const PERFORM_GET_POKEMONS = "[Pokemons] Perform Get Pokemons";
 export const PERFORM_GET_POKEMONS_SUCCESS =
@@ -16,6 +20,12 @@ export const PERFORM_GET_POKEMON_DETAIL_SUCCESS =
 export const PERFORM_GET_POKEMON_DETAIL_ERROR =
   "[Pokemons] Perform Get Pokemon Detail Error";
 const SELECT_POKEMON_BY_ID = "[Pokemons] Select Pokemon By Id";
+
+export const PERFORM_GET_POKEMON_MOVE = "[Pokemons] Perform Get Pokemon Move";
+export const PERFORM_GET_POKEMON_MOVE_SUCCESS =
+  "[Pokemons] Perform Get Pokemon Move Success";
+export const PERFORM_GET_POKEMON_MOVE_ERROR =
+  "[Pokemons] Perform Get Pokemon Move Error";
 export type GetPokemonsAction = {
   type: "[Pokemons] Perform Get Pokemons";
   payload?: string;
@@ -87,7 +97,7 @@ export const performGetMorePokemonsSuccessAction = (): GetMorePokemonsSuccessAct
   type: PERFORM_GET_MORE_POKEMONS_SUCCESS
 });
 
-export const selectPokemonById = (
+export const selectPokemonByIdAction = (
   payload: string
 ): SelectPokemonByIdAction => ({
   type: SELECT_POKEMON_BY_ID,
@@ -115,6 +125,42 @@ export const performGetPokemonErrorAction = (
   payload
 });
 
+export type GetPokemonMoveAction = {
+  type: "[Pokemons] Perform Get Pokemon Move";
+  payload: string;
+};
+
+export const performGetPokemonMoveAction = (
+  payload: string
+): GetPokemonMoveAction => ({
+  type: PERFORM_GET_POKEMON_MOVE,
+  payload
+});
+
+export type GetPokemonMoveSuccessAction = {
+  type: "[Pokemons] Perform Get Pokemon Move Success";
+  payload: PokemonMove;
+};
+
+export const performGetPokemonMoveSuccessAction = (
+  payload: PokemonMove
+): GetPokemonMoveSuccessAction => ({
+  type: PERFORM_GET_POKEMON_MOVE_SUCCESS,
+  payload
+});
+
+export type GetPokemonMoveErrorAction = {
+  type: "[Pokemons] Perform Get Pokemon Move Error";
+  payload: string;
+};
+
+export const performGetPokemonMoveErrorAction = (
+  payload: string
+): GetPokemonMoveErrorAction => ({
+  type: PERFORM_GET_POKEMON_MOVE_ERROR,
+  payload
+});
+
 export type PokemonsActions =
   | GetPokemonsAction
   | GetPokemonsSuccessAction
@@ -124,4 +170,7 @@ export type PokemonsActions =
   | SelectPokemonByIdAction
   | GetPokemonDetailAction
   | GetPokemonDetailSuccessAction
-  | GetPokemonDetailErrorAction;
+  | GetPokemonDetailErrorAction
+  | GetPokemonMoveAction
+  | GetPokemonMoveSuccessAction
+  | GetPokemonMoveErrorAction;

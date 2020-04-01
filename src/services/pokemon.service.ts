@@ -42,6 +42,7 @@ export interface PokemonDetail {
   sprites: PokemonSprites;
   types: PokemonType[];
   id: number;
+  moves: PokemonMove[];
 }
 
 export interface PokemonSprites {
@@ -88,6 +89,16 @@ export interface PokemonSpecieDetail {
   url: string;
 }
 
+export interface PokemonMove {
+  name: string;
+  url: string;
+  id: number;
+  accuracy: number;
+  power: number;
+  pp: number;
+  move: { name: string; url: string };
+}
+
 async function getPokemons(params?: string): Promise<PokemonResponse> {
   const urlParams = params ? `?${params}` : "";
   const res = await httpClient.get(`pokemon/${urlParams}`);
@@ -110,9 +121,16 @@ async function getEvolutionChain(
   const res = await httpClient.get(`evolution-chain/${evolutionChainId}`);
   return res.json();
 }
+
+async function getMove(pokemonMoveName: string): Promise<PokemonMove> {
+  const res = await httpClient.get(`move/${pokemonMoveName}`);
+  return res.json();
+}
+
 export default {
   getPokemons,
   getPokemon,
   getSpecie,
-  getEvolutionChain
+  getEvolutionChain,
+  getMove
 };

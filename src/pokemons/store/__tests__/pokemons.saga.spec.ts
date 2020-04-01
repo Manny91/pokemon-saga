@@ -10,14 +10,19 @@ import {
   performGetMorePokemonsSuccessAction,
   PERFORM_GET_POKEMON_DETAIL,
   performGetPokemonDetailAction,
-  performGetPokemonDetailSuccessAction
+  performGetPokemonDetailSuccessAction,
+  PERFORM_GET_POKEMON_MOVE,
+  performGetPokemonMoveAction,
+  performGetPokemonMoveSuccessAction,
+  performGetPokemonMoveErrorAction
 } from "./../pokemons.actions";
 import { all, takeLatest, call, put, select } from "redux-saga/effects";
 import {
   pokemonsSaga,
   performGetPokemonsSaga,
   performGetMorePokemonsSaga,
-  performGetPokemonDetailsSaga
+  performGetPokemonDetailsSaga,
+  performGetPokemonMoveSaga
 } from "../pokemons.saga";
 import {
   PERFORM_GET_POKEMONS,
@@ -35,7 +40,8 @@ describe("PokemonSagas", () => {
     const expectedYield = all([
       takeLatest(PERFORM_GET_POKEMONS, performGetPokemonsSaga),
       takeLatest(PERFORM_GET_MORE_POKEMONS, performGetMorePokemonsSaga),
-      takeLatest(PERFORM_GET_POKEMON_DETAIL, performGetPokemonDetailsSaga)
+      takeLatest(PERFORM_GET_POKEMON_DETAIL, performGetPokemonDetailsSaga),
+      takeLatest(PERFORM_GET_POKEMON_MOVE, performGetPokemonMoveSaga)
     ]);
     const actualYield = generator.next().value;
     expect(actualYield).toEqual(expectedYield);
@@ -206,6 +212,42 @@ describe("PokemonSagas", () => {
         )
       );
       expect(actualSuccessYield).toEqual(expectedSuccessYield);
+    });
+  });
+
+  describe("performGetPokemonMove saga", () => {
+    const moveName = "razor-wind";
+    const action = performGetPokemonMoveAction(moveName);
+    const generator = performGetPokemonMoveSaga(action);
+
+    it("should put performGetPokemonMoveSuccessAction with the move response", () => {
+      const response = {
+        name: "razor-wind",
+        url: "test-url",
+        id: 1,
+        accuracy: 100,
+        power: 88,
+        pp: 10,
+        move: { name: "razor-wind", url: "test-url" }
+      };
+
+      const expectedCallYield = call(pokemonService.getMove, moveName);
+      const actualCallYield = generator.next(action).value;
+      expect(actualCallYield).toEqual(expectedCallYield);
+
+      const expectedYield = put(performGetPokemonMoveSuccessAction(response));
+
+      const actualYield = generator.next(response).value;
+
+      expect(actualYield).toEqual(expectedYield);
+    });
+    it("should put performGetPokemonMoveErrorAction after a failing call", () => {
+      const error = { message: "test error" };
+      const expectedYield = put(
+        performGetPokemonMoveErrorAction(error.message)
+      );
+      const actualYield = generator.throw(error).value;
+      expect(actualYield).toEqual(expectedYield);
     });
   });
 });

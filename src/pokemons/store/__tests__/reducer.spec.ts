@@ -16,7 +16,13 @@ import {
   GetMorePokemonsAction,
   PERFORM_GET_MORE_POKEMONS,
   GetMorePokemonsSuccessAction,
-  PERFORM_GET_MORE_POKEMONS_SUCCESS
+  PERFORM_GET_MORE_POKEMONS_SUCCESS,
+  GetPokemonMoveAction,
+  PERFORM_GET_POKEMON_MOVE,
+  GetPokemonMoveErrorAction,
+  PERFORM_GET_POKEMON_MOVE_ERROR,
+  PERFORM_GET_POKEMON_MOVE_SUCCESS,
+  GetPokemonMoveSuccessAction
 } from "./../pokemons.actions";
 import pokemonsReducer from "../reducer";
 import { AppState } from "../../../store";
@@ -29,7 +35,10 @@ const defaultState: PokemonState = {
   pokemonsCount: 0,
   loadingDetail: false,
   pokemonsDetail: {},
-  pokemonSelectedId: ""
+  pokemonSelectedId: "",
+  errorLoadingMove: "",
+  loadingMove: false,
+  pokemonsMoves: {}
 };
 
 describe("PokemonReducer", () => {
@@ -93,7 +102,10 @@ describe("PokemonReducer", () => {
       pokemons: pokemonsState,
       pokemonSelectedId: "",
       pokemonsDetail: {},
-      loadingDetail: false
+      loadingDetail: false,
+      loadingMove: false,
+      pokemonsMoves: {},
+      errorLoadingMove: ""
     };
 
     const payload: PokemonResponse = {
@@ -171,6 +183,71 @@ describe("PokemonReducer", () => {
     const expectedState = {
       ...defaultState,
       loading: false
+    };
+
+    const actualState = pokemonsReducer(defaultState, action);
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it("Sets the expected state for performing GetPokemonMoveAction", () => {
+    const payload = "razor-wind";
+    const action: GetPokemonMoveAction = {
+      type: PERFORM_GET_POKEMON_MOVE,
+      payload
+    };
+    const expectedState: PokemonState = {
+      ...defaultState,
+      loadingMove: true
+    };
+
+    const actualState = pokemonsReducer(defaultState, action);
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it("Sets the expected state for performing GetPokemonMoveErrorAction", () => {
+    const payload = "ERROR";
+    const action: GetPokemonMoveErrorAction = {
+      type: PERFORM_GET_POKEMON_MOVE_ERROR,
+      payload
+    };
+    const expectedState: PokemonState = {
+      ...defaultState,
+      loadingMove: false,
+      errorLoadingMove: payload
+    };
+
+    const actualState = pokemonsReducer(defaultState, action);
+    expect(actualState).toEqual(expectedState);
+  });
+
+  it("Sets the expected state for performing GetPokemonMoveSuccessAction", () => {
+    const payload = {
+      name: "razor-wind",
+      url: "test-url",
+      id: 1,
+      accuracy: 100,
+      power: 88,
+      pp: 10,
+      move: { name: "razor-wind", url: "test-url" }
+    };
+    const action: GetPokemonMoveSuccessAction = {
+      type: PERFORM_GET_POKEMON_MOVE_SUCCESS,
+      payload
+    };
+    const expectedState: PokemonState = {
+      ...defaultState,
+      loadingMove: false,
+      pokemonsMoves: {
+        "razor-wind": {
+          name: "razor-wind",
+          url: "test-url",
+          id: 1,
+          accuracy: 100,
+          power: 88,
+          pp: 10,
+          move: { name: "razor-wind", url: "test-url" }
+        }
+      }
     };
 
     const actualState = pokemonsReducer(defaultState, action);
