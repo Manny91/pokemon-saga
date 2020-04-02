@@ -181,8 +181,7 @@ describe("PokemonReducer", () => {
       type: PERFORM_GET_MORE_POKEMONS_SUCCESS
     };
     const expectedState = {
-      ...defaultState,
-      loading: false
+      ...defaultState
     };
 
     const actualState = pokemonsReducer(defaultState, action);
