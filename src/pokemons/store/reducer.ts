@@ -66,11 +66,6 @@ export default function pokemonsReducer(
         error: action.payload,
         loading: false
       };
-    case "[Pokemons] Perform Get More Pokemons Success":
-      return {
-        ...state,
-        loading: false
-      };
     case "[Pokemons] Select Pokemon By Id":
       return {
         ...state,

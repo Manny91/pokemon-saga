@@ -10,7 +10,7 @@ const loadingAnimation = keyframes`
         transform: scale(1.0);
     }
 `;
-const LoadingDot = styled.li`
+export const LoadingDot = styled.li`
   width: 4px;
   height: 4px;
   background-color: black;

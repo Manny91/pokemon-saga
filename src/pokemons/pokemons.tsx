@@ -6,13 +6,15 @@ import PokemonDetailContainer from "./components/pokemon-detail/pokemons-detail.
 import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 import { PokedexCircles } from "./components/pokedex-circles/pokedex-circles";
 import { StyledLink } from "./components/styled-link/styled-link";
+import { PokemonLoadingItem } from "./components/pokemon-loading-item/pokemon-loading-item";
 
 export const Pokemons = ({
   getPokemons,
   pokemonSelected,
   pokemons,
   getMorePokemons,
-  error
+  error,
+  loading
 }: PokemonContainerProps) => {
   const scrollRef = React.useRef<HTMLUListElement>(null);
   useEffect(() => {
@@ -49,6 +51,7 @@ export const Pokemons = ({
                   );
                 })}
             </PokemonList>
+            {loading && <PokemonLoadingItem />}
           </Left>
           <Right>
             <Switch>
