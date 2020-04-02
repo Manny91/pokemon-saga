@@ -20,6 +20,7 @@ exports[`PokemonAbilitiesDisplayer Component should render properly 1`] = `
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
+  min-width: 120px;
   border: inset #9aa28b 3px;
 }
 

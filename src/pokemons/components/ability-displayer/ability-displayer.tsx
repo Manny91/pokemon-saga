@@ -39,6 +39,7 @@ const AbilityWrapper = styled.div`
   padding: 15px 20px;
   border-radius: 3px;
   flex-grow: 1;
+  min-width: 120px;
   border: inset ${props => props.theme.colors.greenBorder} 3px;
 `;
 

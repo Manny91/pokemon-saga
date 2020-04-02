@@ -5,6 +5,7 @@ import { PokemonListItem } from "./components/pokemon-list-item/pokemon-list-ite
 import PokemonDetailContainer from "./components/pokemon-detail/pokemons-detail.container";
 import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
 import { PokedexCircles } from "./components/pokedex-circles/pokedex-circles";
+import { StyledLink } from "./components/styled-link/styled-link";
 
 export const Pokemons = ({
   getPokemons,
@@ -68,9 +69,6 @@ const PokemonsPage = styled.div`
   font-family: "VT323";
 `;
 
-export const StyledLink = styled(Link)`
-  text-decoration: none;
-`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
