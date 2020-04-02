@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { PokemonContainerProps } from "./pokemon.container";
 import styled from "../styled-components";
 import { PokemonListItem } from "./components/pokemon-list-item/pokemon-list-item";
 import PokemonDetailContainer from "./components/pokemon-detail/pokemons-detail.container";
-import { Route, BrowserRouter, Switch, Link } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { PokedexCircles } from "./components/pokedex-circles/pokedex-circles";
 import { StyledLink } from "./components/styled-link/styled-link";
 import { PokemonLoadingItem } from "./components/pokemon-loading-item/pokemon-loading-item";
@@ -17,10 +17,14 @@ export const Pokemons = ({
   loading
 }: PokemonContainerProps) => {
   const scrollRef = React.useRef<HTMLUListElement>(null);
+  const [pokemonsFiltered, setPokemonsFiltered] = useState(pokemons);
   useEffect(() => {
     getPokemons();
   }, [getPokemons]);
 
+  useEffect(() => {
+    setPokemonsFiltered(pokemons);
+  }, [pokemons]);
   const handleScroll = (_: React.UIEvent<HTMLUListElement>) => {
     // added default values as a null-check
     const scrollTop = scrollRef.current?.scrollTop || 0;
@@ -30,6 +34,15 @@ export const Pokemons = ({
       getMorePokemons();
     }
   };
+
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const valueTyped = event.target.value;
+    const newPokemonsFiltered = pokemons.filter(
+      pokemons => pokemons.name.indexOf(valueTyped) !== -1
+    );
+
+    setPokemonsFiltered(newPokemonsFiltered);
+  };
   return (
     <PokemonsPage>
       <BrowserRouter>
@@ -37,9 +50,12 @@ export const Pokemons = ({
         <Container>
           <Left>
             {error && <h2> {error}</h2>}
+            <InputContainer>
+              <InputSearch onChange={onChangeHandler} />
+            </InputContainer>
             <PokemonList ref={scrollRef} onScroll={handleScroll}>
-              {pokemons &&
-                pokemons.map(({ name, id }) => {
+              {pokemonsFiltered &&
+                pokemonsFiltered.map(({ name, id }) => {
                   return (
                     <StyledLink key={id} to={`/pokemon/${id}/`}>
                       <PokemonListItem
@@ -101,4 +117,20 @@ const PokemonList = styled.ul`
   @media ${props => props.theme.media.md} {
     height: 500px;
   }
+`;
+
+const InputContainer = styled.div`
+  margin: ${props => props.theme.spacing.sm};
+  padding: 0px;
+  border: 5px double;
+  margin: 10px;
+  display: flex;
+`;
+const InputSearch = styled.input`
+  background-color: ${props => props.theme.colors.greenScreen};
+  width: 100%;
+  height: 30px;
+  font-size: 20px;
+  font-family: "VT323";
+  border-color: ${props => props.theme.colors.greenBorder};
 `;
