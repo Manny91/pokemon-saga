@@ -3,7 +3,8 @@ import {
   getPokemons,
   getPokemonsError,
   getPokemonsLoading,
-  getPokemonSelectedId
+  getPokemonSelectedId,
+  getPokemonLoadingDetail
 } from "./store/reducer";
 import { PokemonsDispatch, AppState } from "../store";
 import {
@@ -23,6 +24,7 @@ interface MapStateToProps {
   error: string;
   loading: boolean;
   pokemonSelected: string;
+  loadingDetail: boolean;
 }
 
 export type PokemonContainerProps = DispatchProps & MapStateToProps;
@@ -32,7 +34,8 @@ function mapStateToProps(state: AppState): MapStateToProps {
     pokemons: getPokemons(state),
     error: getPokemonsError(state),
     loading: getPokemonsLoading(state),
-    pokemonSelected: getPokemonSelectedId(state)
+    pokemonSelected: getPokemonSelectedId(state),
+    loadingDetail: getPokemonLoadingDetail(state)
   };
 }
 

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonLoadingItem Component should render properly 1`] = `
+.c3 {
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  border-radius: 1px;
+  margin: 0px 2px;
+  list-style-type: none;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  animation: fZpxSO 1s infinite ease-in-out both;
+}
+
+.c1 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.c1 .c2:nth-child(1) {
+  -webkit-animation-delay: -0.35s;
+  animation-delay: -0.35s;
+}
+
+.c1 .c2:nth-child(2) {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+
+.c0 .c2 {
+  width: 15px;
+  height: 15px;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <ul
+      class="c1"
+    >
+      <li
+        class="c2 c3"
+      />
+      <li
+        class="c2 c3"
+      />
+      <li
+        class="c2 c3"
+      />
+    </ul>
+  </div>
+</div>
+`;

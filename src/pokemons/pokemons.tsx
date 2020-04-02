@@ -14,10 +14,13 @@ export const Pokemons = ({
   pokemons,
   getMorePokemons,
   error,
-  loading
+  loading,
+  loadingDetail
 }: PokemonContainerProps) => {
   const scrollRef = React.useRef<HTMLUListElement>(null);
+  const isLoading = loading || loadingDetail;
   const [pokemonsFiltered, setPokemonsFiltered] = useState(pokemons);
+
   useEffect(() => {
     getPokemons();
   }, [getPokemons]);
@@ -25,6 +28,7 @@ export const Pokemons = ({
   useEffect(() => {
     setPokemonsFiltered(pokemons);
   }, [pokemons]);
+
   const handleScroll = (_: React.UIEvent<HTMLUListElement>) => {
     // added default values as a null-check
     const scrollTop = scrollRef.current?.scrollTop || 0;
@@ -40,7 +44,6 @@ export const Pokemons = ({
     const newPokemonsFiltered = pokemons.filter(
       pokemons => pokemons.name.indexOf(valueTyped) !== -1
     );
-
     setPokemonsFiltered(newPokemonsFiltered);
   };
   return (
@@ -70,7 +73,7 @@ export const Pokemons = ({
                   );
                 })}
             </PokemonList>
-            {loading && <PokemonLoadingItem />}
+            {isLoading && <PokemonLoadingItem />}
           </Left>
           <Right>
             <Switch>
