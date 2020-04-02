@@ -18,28 +18,19 @@ export function PokemonTypeDisplayer({ types }: PokemonTypeProps) {
 }
 const TypeWrapper = styled.div`
   background: linear-gradient(14deg, #afafaf 50%, #ffffff 80%, #afafaf 90%);
-  border: groove #4e4e4e 3px;
+  border: groove ${props => props.theme.colors.greenDarkBorder} 3px;
   width: 100%;
 `;
 const PokemonTypeBannerHeader = styled.div`
   height: 35px;
   text-transform: uppercase;
   text-align: center;
-  border: groove #757575 3px;
+  border: groove ${props => props.theme.colors.blackBorder} 3px;
   justify-content: center;
   display: flex;
   align-items: center;
-  font-family: "VT323";
   font-size: 19px;
   font-weight: bold;
-  background: linear-gradient(
-    14deg,
-    #460f0f 0,
-    #891313 30%,
-    #b31818 45%,
-    #fd5555 65%,
-    #b31818 95%
-  );
 `;
 
 const PokemonTypeBanner = styled(PokemonTypeBannerHeader)`
@@ -50,63 +41,63 @@ const PokemonTypeBanner = styled(PokemonTypeBannerHeader)`
   margin: 3px;
 
   &.normal {
-    background: #bfbfbf;
+    background: ${props => props.theme.colors.pokemonTypes.normal};
   }
   &.fighting {
-    background: #d87c58;
+    background: ${props => props.theme.colors.pokemonTypes.fighting};
   }
   &.flying {
-    background: #999ade;
+    background: ${props => props.theme.colors.pokemonTypes.flying};
   }
   &.poison {
-    background: #925192;
+    background: ${props => props.theme.colors.pokemonTypes.poison};
   }
   &.ground {
-    background: #dea761;
+    background: ${props => props.theme.colors.pokemonTypes.ground};
   }
   &.rock {
-    background: #897864;
+    background: ${props => props.theme.colors.pokemonTypes.rock};
   }
   &.bug {
-    background: #b1c967;
+    background: ${props => props.theme.colors.pokemonTypes.bug};
   }
   &.ghost {
-    background: #c195dc;
+    background: ${props => props.theme.colors.pokemonTypes.ghost};
   }
   &.steel {
-    background: #49769c;
+    background: ${props => props.theme.colors.pokemonTypes.steel};
   }
   &.fire {
-    background: #cf1414;
+    background: ${props => props.theme.colors.pokemonTypes.fire};
   }
   &.water {
-    background: #1689de;
+    background: ${props => props.theme.colors.pokemonTypes.water};
   }
   &.grass {
-    background: #47a047;
+    background: ${props => props.theme.colors.pokemonTypes.grass};
   }
   &.electric {
-    background: #e6b700;
+    background: ${props => props.theme.colors.pokemonTypes.electric};
   }
   &.psychic {
-    background: #fa43b8;
+    background: ${props => props.theme.colors.pokemonTypes.psychic};
   }
   &.ice {
-    background: #98c3de;
+    background: ${props => props.theme.colors.pokemonTypes.ice};
   }
   &.dragon {
-    background: #89315d;
+    background: ${props => props.theme.colors.pokemonTypes.dragon};
   }
   &.dark {
-    background: #282433;
+    background: ${props => props.theme.colors.pokemonTypes.dark};
   }
   &.fairy {
-    background: #dca0ce;
+    background: ${props => props.theme.colors.pokemonTypes.fairy};
   }
   &.unknown {
-    background: #545454;
+    background: ${props => props.theme.colors.pokemonTypes.unknown};
   }
   &.shadow {
-    background: #364163;
+    background: ${props => props.theme.colors.pokemonTypes.shadow};
   }
 `;

@@ -1,0 +1,127 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonTypeDisplayer Component should render properly 1`] = `
+.c0 {
+  background: linear-gradient(14deg,#afafaf 50%,#ffffff 80%,#afafaf 90%);
+  border: groove #4e4e4e 3px;
+  width: 100%;
+}
+
+.c1 {
+  height: 35px;
+  text-transform: uppercase;
+  text-align: center;
+  border: groove #757575 3px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 19px;
+  font-weight: bold;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  margin: 3px;
+}
+
+.c1.normal {
+  background: #bfbfbf;
+}
+
+.c1.fighting {
+  background: #d87c58;
+}
+
+.c1.flying {
+  background: #999ade;
+}
+
+.c1.poison {
+  background: #925192;
+}
+
+.c1.ground {
+  background: #dea761;
+}
+
+.c1.rock {
+  background: #897864;
+}
+
+.c1.bug {
+  background: #b1c967;
+}
+
+.c1.ghost {
+  background: #c195dc;
+}
+
+.c1.steel {
+  background: #49769c;
+}
+
+.c1.fire {
+  background: #cf1414;
+}
+
+.c1.water {
+  background: #1689de;
+}
+
+.c1.grass {
+  background: #47a047;
+}
+
+.c1.electric {
+  background: #e6b700;
+}
+
+.c1.psychic {
+  background: #fa43b8;
+}
+
+.c1.ice {
+  background: #98c3de;
+}
+
+.c1.dragon {
+  background: #89315d;
+}
+
+.c1.dark {
+  background: #282433;
+}
+
+.c1.fairy {
+  background: #dca0ce;
+}
+
+.c1.unknown {
+  background: #545454;
+}
+
+.c1.shadow {
+  background: #364163;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="sc-AxirZ c1 grass"
+    >
+      grass
+    </div>
+  </div>
+</div>
+`;
