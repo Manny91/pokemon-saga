@@ -452,6 +452,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   overflow: auto;
+  width: 100%;
 }
 
 .c13 {
@@ -460,7 +461,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 7px;
+  padding: 10px;
   cursor: pointer;
 }
 

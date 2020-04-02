@@ -212,11 +212,12 @@ const TextParagraph = styled.h3`
 const PokemonMoveListContainer = styled(InfoDisplayer)`
   flex-direction: column;
   overflow: auto;
+  width: 100%;
 `;
 const PokemonMoveListItem = styled.li`
   font-weight: bold;
   display: flex;
-  padding: 7px;
+  padding: ${props => props.theme.spacing.sm};
   cursor: pointer;
   &.selected {
     display: list-item;
