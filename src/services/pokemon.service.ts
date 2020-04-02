@@ -17,7 +17,7 @@ interface PokemonStat {
   stat: { name: string };
 }
 
-interface PokemonType {
+export interface PokemonType {
   slot: number;
   type: { name: string };
 }

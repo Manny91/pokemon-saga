@@ -203,6 +203,11 @@ export const getPokemonMoveSelected = createSelector(
   pokemonsState => pokemonsState.moveNameSelected
 );
 
+export const getPokemonMoveLoading = createSelector(
+  pokemonsState,
+  pokemonsState => pokemonsState.loadingMove
+);
+
 export const getMoveSelected = createSelector(
   getPokemonMoves,
   getPokemonMoveSelected,

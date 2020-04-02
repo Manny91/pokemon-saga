@@ -2,7 +2,8 @@ import { Pokemon } from "../services/pokemon.service";
 import {
   getPokemons,
   getPokemonsError,
-  getPokemonsLoading
+  getPokemonsLoading,
+  getPokemonSelectedId
 } from "./store/reducer";
 import { PokemonsDispatch, AppState } from "../store";
 import {
@@ -21,6 +22,7 @@ interface MapStateToProps {
   pokemons: Pokemon[];
   error: string;
   loading: boolean;
+  pokemonSelected: string;
 }
 
 export type PokemonContainerProps = DispatchProps & MapStateToProps;
@@ -29,7 +31,8 @@ function mapStateToProps(state: AppState): MapStateToProps {
   return {
     pokemons: getPokemons(state),
     error: getPokemonsError(state),
-    loading: getPokemonsLoading(state)
+    loading: getPokemonsLoading(state),
+    pokemonSelected: getPokemonSelectedId(state)
   };
 }
 

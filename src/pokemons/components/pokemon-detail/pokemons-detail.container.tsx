@@ -7,10 +7,15 @@ import {
   performGetPokemonMoveAction,
   selectMoveByNameAction
 } from "../../store/pokemons.actions";
-import { PokemonDetail as Pokemon } from "../../../services/pokemon.service";
+import {
+  PokemonDetail as Pokemon,
+  PokemonMove
+} from "../../../services/pokemon.service";
 import {
   getPokemonSelected,
-  getPokemonLoadingDetail
+  getPokemonLoadingDetail,
+  getMoveSelected,
+  getPokemonMoveLoading
 } from "../../store/reducer";
 
 interface DispatchProps {
@@ -23,6 +28,8 @@ interface DispatchProps {
 interface MapStateToProps {
   pokemon?: Pokemon;
   loading: boolean;
+  selectedMove: PokemonMove;
+  loadingMoves: boolean;
 }
 
 export type PokemonDetailContainerProps = DispatchProps & MapStateToProps;
@@ -30,7 +37,9 @@ export type PokemonDetailContainerProps = DispatchProps & MapStateToProps;
 function mapStateToProps(state: AppState): MapStateToProps {
   return {
     pokemon: getPokemonSelected(state),
-    loading: getPokemonLoadingDetail(state)
+    loading: getPokemonLoadingDetail(state),
+    selectedMove: getMoveSelected(state),
+    loadingMoves: getPokemonMoveLoading(state)
   };
 }
 

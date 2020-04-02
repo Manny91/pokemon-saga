@@ -10,16 +10,33 @@ exports[`PokemonListItem Component should render properly 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
   border: 2px solid black;
   cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #A5CD53;
+  border-width: 3px;
+  border-style: inset;
+  border-color: #9aa28b;
+  font-weight: 500;
+  color: black;
+  font-family: "VT323";
+}
+
+.c0.selected {
+  font-weight: bold;
+  background-color: #CBEE84;
+}
+
+.c0:hover {
+  font-weight: bold;
 }
 
 .c1 {
-  font-size: 20px;
-  padding: 10px;
+  font-size: 22px;
+  padding: 5px;
 }
 
 .c2 {
@@ -33,11 +50,28 @@ exports[`PokemonListItem Component should render properly 1`] = `
   align-items: center;
 }
 
+.c2.reduced {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .c4 {
-  font-size: 16px;
+  font-size: 20px;
   text-align: center;
   text-transform: capitalize;
   margin-left: 10px;
+}
+
+@media (min-width:992px) {
+  .c2.reduced {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 140px;
+  }
 }
 
 <div>
