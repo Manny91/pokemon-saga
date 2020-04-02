@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokedexCircles Component should render properly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  cursor: pointer;
+  border-bottom: 10px double;
+  padding: 0px 10px;
+}
+
+.c1 {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  border: double black 10px;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+}
+
+.c1:after {
+  content: "";
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  position: absolute;
+  top: 25%;
+  width: 12%;
+  height: 12%;
+  background-color: white;
+  left: 25%;
+  border-radius: 50%;
+}
+
+.c3 {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  border: double black 10px;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  height: 15px;
+  width: 15px;
+}
+
+.c3:after {
+  content: "";
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  position: absolute;
+  top: 25%;
+  width: 12%;
+  height: 12%;
+  background-color: white;
+  left: 25%;
+  border-radius: 50%;
+}
+
+.c2 {
+  background-image: linear-gradient( to right, #6f95ff, #3c54a6 );
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.c4 {
+  background-image: linear-gradient( to right, #6f95ff, #3c54a6 );
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient( to right, #e61515, #ce0000 );
+}
+
+.c5 {
+  background-image: linear-gradient( to right, #6f95ff, #3c54a6 );
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient( to right, yellow, #dada03 );
+}
+
+.c6 {
+  background-image: linear-gradient( to right, #6f95ff, #3c54a6 );
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient( to right, #008000, #016301 );
+}
+
+@media (min-width:768px) {
+  .c1 {
+    margin: 1em;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width:768px) {
+  .c3 {
+    margin: 1em;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width:768px) {
+  .c3 {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      />
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c4"
+      />
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c5"
+      />
+    </div>
+    <div
+      class="c3"
+    >
+      <div
+        class="c6"
+      />
+    </div>
+  </div>
+</div>
+`;
