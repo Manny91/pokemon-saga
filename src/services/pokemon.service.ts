@@ -11,8 +11,8 @@ export interface Pokemon {
   name: string;
   url: string;
 }
-interface PokemonStat {
-  base_state: number;
+export interface PokemonStat {
+  base_stat: number;
   effort: number;
   stat: { name: string };
 }
@@ -33,9 +33,10 @@ export interface PokemonMove {
 }
 
 export interface PokemonDetail {
-  abilities: Ability[];
+  abilities: PokemonAbility[];
   height: number;
   name: string;
+  order: number;
   weight: number;
   stats: PokemonStat[];
   species: PokemonSpecieDetail;
@@ -62,8 +63,8 @@ interface Language {
   name: string;
 }
 
-interface Ability {
-  name: string;
+export interface PokemonAbility {
+  ability: { name: string };
 }
 
 export interface PokemonEvolutionSpecie {
