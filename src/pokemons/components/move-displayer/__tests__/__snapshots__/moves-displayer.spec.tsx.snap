@@ -1,0 +1,233 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonMoveDisplayer Component should render properly when loading is false 1`] = `
+.c0 {
+  background-color: #A5CD53;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: inset #9aa28b 3px;
+  width: calc(100% - 100px);
+}
+
+.c2 {
+  text-transform: capitalize;
+  margin: 5px 0px;
+}
+
+.c3 {
+  margin: 5px;
+  border-top: 2px solid black;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0;
+}
+
+.c4 {
+  font-weight: bold;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c6 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: groove grey 3px;
+  margin: 5px;
+}
+
+<div>
+  <section
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <h4
+        class="c2"
+      >
+        razor-wind
+      </h4>
+      <ul
+        class="c3"
+      >
+        <li
+          class="c4"
+        >
+          Power : 
+          10
+        </li>
+        <li
+          class="c4"
+        >
+          Accuracy : 
+          100
+        </li>
+        <li
+          class="c4"
+        >
+          PP : 
+          10
+        </li>
+      </ul>
+    </div>
+    <div
+      class=""
+    />
+  </section>
+  <div
+    class="c5"
+  >
+    <button
+      class="c6"
+    >
+      <i
+        class="fas fa-caret-up"
+      />
+    </button>
+    <button
+      class="c6"
+    >
+      <i
+        class="fas fa-caret-down"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`PokemonMoveDisplayer Component should render properly when loading is true 1`] = `
+.c4 {
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  border-radius: 1px;
+  margin: 0px 2px;
+  list-style-type: none;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  animation: fZpxSO 1s infinite ease-in-out both;
+}
+
+.c2 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.c2 .c3:nth-child(1) {
+  -webkit-animation-delay: -0.35s;
+  animation-delay: -0.35s;
+}
+
+.c2 .c3:nth-child(2) {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+
+.c0 {
+  background-color: #A5CD53;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: inset #9aa28b 3px;
+  width: calc(100% - 100px);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c6 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: groove grey 3px;
+  margin: 5px;
+}
+
+<div>
+  <section
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <ul
+        class="c2"
+      >
+        <li
+          class="c3 c4"
+        />
+        <li
+          class="c3 c4"
+        />
+        <li
+          class="c3 c4"
+        />
+      </ul>
+    </div>
+    <div
+      class=""
+    />
+  </section>
+  <div
+    class="c5"
+  >
+    <button
+      class="c6"
+    >
+      <i
+        class="fas fa-caret-up"
+      />
+    </button>
+    <button
+      class="c6"
+    >
+      <i
+        class="fas fa-caret-down"
+      />
+    </button>
+  </div>
+</div>
+`;

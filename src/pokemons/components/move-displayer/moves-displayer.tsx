@@ -50,14 +50,9 @@ export function PokemonMoveDisplayer({
 }
 
 const MovesWrapper = styled.section`
-  background: linear-gradient(
-    14deg,
-    rgb(165, 205, 83) 60%,
-    rgb(193, 217, 144) 65%
-  );
+  background-color: ${props => props.theme.colors.greenScreen};
   padding: 10px 20px;
   border-radius: 3px;
-  font-family: "VT323";
   border: inset ${props => props.theme.colors.greenBorder} 3px;
   width: calc(100% - 100px);
 `;
