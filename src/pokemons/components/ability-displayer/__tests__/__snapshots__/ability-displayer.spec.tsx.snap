@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonAbilitiesDisplayer Component should render properly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #A5CD53;
+  padding: 15px 20px;
+  border-radius: 3px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  border: inset #9aa28b 3px;
+}
+
+.c2 {
+  margin: 5px 0px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.c1 {
+  text-transform: capitalize;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <h4
+      class="c1"
+    >
+       Abilities: 
+    </h4>
+    <p
+      class="c2"
+    >
+      test ability
+    </p>
+    <p
+      class="c2"
+    >
+      test ability 2
+    </p>
+  </div>
+</div>
+`;
