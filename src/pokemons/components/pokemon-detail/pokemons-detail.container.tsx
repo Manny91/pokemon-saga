@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { PokemonDetail } from "./pokemon-detail";
+import { PokemonDetailView } from "./pokemon-detail";
 import { AppState, PokemonsDispatch } from "../../../store";
 import {
   performGetPokemonDetailAction,
@@ -57,4 +57,4 @@ const mapDispatchToProps = (dispatch: PokemonsDispatch): DispatchProps => ({
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonDetailView);

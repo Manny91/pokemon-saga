@@ -1,0 +1,754 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonDetail Component should render properly 1`] = `
+.c4 {
+  image-rendering: pixelated;
+}
+
+.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px solid black;
+  cursor: pointer;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #A5CD53;
+  border-width: 3px;
+  border-style: inset;
+  border-color: #9aa28b;
+  font-weight: 500;
+  color: black;
+  font-family: "VT323";
+}
+
+.c7.selected {
+  font-weight: bold;
+  background-color: #CBEE84;
+}
+
+.c7:hover {
+  font-weight: bold;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c8.reduced {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.c9 {
+  font-size: 20px;
+  text-align: center;
+  text-transform: capitalize;
+  margin-left: 10px;
+}
+
+.c30 {
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  border-radius: 1px;
+  margin: 0px 2px;
+  list-style-type: none;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  animation: fZpxSO 1s infinite ease-in-out both;
+}
+
+.c28 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.c28 .c29:nth-child(1) {
+  -webkit-animation-delay: -0.35s;
+  animation-delay: -0.35s;
+}
+
+.c28 .c29:nth-child(2) {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+
+.c14 {
+  background-color: #A5CD53;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: inset #9aa28b 3px;
+  width: calc(100% - 100px);
+}
+
+.c16 {
+  text-transform: capitalize;
+  margin: 5px 0px;
+}
+
+.c17 {
+  margin: 5px;
+  border-top: 2px solid black;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0;
+}
+
+.c18 {
+  font-weight: bold;
+}
+
+.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.c20 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: groove grey 3px;
+  margin: 5px;
+}
+
+.c22 {
+  background: linear-gradient(14deg,#afafaf 50%,#ffffff 80%,#afafaf 90%);
+  border: groove #4e4e4e 3px;
+  width: 100%;
+}
+
+.c23 {
+  height: 35px;
+  text-transform: uppercase;
+  text-align: center;
+  border: groove #757575 3px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 19px;
+  font-weight: bold;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  margin: 3px;
+}
+
+.c23.normal {
+  background: #bfbfbf;
+}
+
+.c23.fighting {
+  background: #d87c58;
+}
+
+.c23.flying {
+  background: #999ade;
+}
+
+.c23.poison {
+  background: #925192;
+}
+
+.c23.ground {
+  background: #dea761;
+}
+
+.c23.rock {
+  background: #897864;
+}
+
+.c23.bug {
+  background: #b1c967;
+}
+
+.c23.ghost {
+  background: #c195dc;
+}
+
+.c23.steel {
+  background: #49769c;
+}
+
+.c23.fire {
+  background: #cf1414;
+}
+
+.c23.water {
+  background: #1689de;
+}
+
+.c23.grass {
+  background: #47a047;
+}
+
+.c23.electric {
+  background: #e6b700;
+}
+
+.c23.psychic {
+  background: #fa43b8;
+}
+
+.c23.ice {
+  background: #98c3de;
+}
+
+.c23.dragon {
+  background: #89315d;
+}
+
+.c23.dark {
+  background: #282433;
+}
+
+.c23.fairy {
+  background: #dca0ce;
+}
+
+.c23.unknown {
+  background: #545454;
+}
+
+.c23.shadow {
+  background: #364163;
+}
+
+.c24 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  background-color: #A5CD53;
+  padding: 15px 20px;
+  border-radius: 3px;
+  border: inset #9aa28b 3px;
+}
+
+.c25 {
+  margin: 5px 0px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.c26 {
+  border: 1px solid;
+  background-color: #A5CD53;
+  padding: 5px;
+  border-radius: 3px;
+  border: inset #9aa28b 3px;
+}
+
+.c26 .c27 {
+  margin: 7px;
+}
+
+.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background-color: #A5CD53;
+  padding: 15px 20px;
+  border-radius: 3px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  min-width: 120px;
+  border: inset #9aa28b 3px;
+}
+
+.c33 {
+  margin: 5px 0px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.c32 {
+  text-transform: capitalize;
+}
+
+.c6 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  margin: 5px;
+}
+
+.c0 {
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: groove #4e4e4e 3px;
+}
+
+.c10 {
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: groove #4e4e4e 3px;
+}
+
+.c11 {
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: groove #4e4e4e 3px;
+  height: 100px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  border: none;
+}
+
+.c21 {
+  padding: 5px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border: groove #4e4e4e 3px;
+  height: 100px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  border: none;
+  padding: 0px;
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 45%;
+}
+
+.c1 {
+  padding: 10px;
+  border: inset #9aa28b 3px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: linear-gradient( 14deg, rgb(165,205,83) 60%, rgb(193,217,144) 65% );
+  margin: 5px;
+}
+
+.c3 {
+  text-transform: capitalize;
+  margin: 5px;
+}
+
+.c12 {
+  padding: 10px;
+  border: inset #9aa28b 3px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background: linear-gradient( 14deg, rgb(165,205,83) 60%, rgb(193,217,144) 65% );
+  margin: 5px;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.c13 {
+  font-weight: bold;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.c13.selected {
+  display: list-item;
+}
+
+@media (min-width:992px) {
+  .c8.reduced {
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 140px;
+  }
+}
+
+@media (min-width:992px) {
+  .c5 {
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:768px) {
+  .c0 {
+    margin: 10px;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:768px) {
+  .c10 {
+    margin: 10px;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:768px) {
+  .c11 {
+    margin: 10px;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:768px) {
+  .c11 {
+    width: 50%;
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+@media (min-width:768px) {
+  .c21 {
+    margin: 10px;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+}
+
+@media (min-width:768px) {
+  .c21 {
+    width: 50%;
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+@media (min-width:768px) {
+  .c1 {
+    width: 100%;
+  }
+}
+
+@media (min-width:768px) {
+  .c12 {
+    width: 100%;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c1"
+    >
+      <div
+        class="c2"
+      >
+        <h3
+          class="c3"
+        >
+          Name: 
+          bulbasaur
+        </h3>
+        <h3
+          class="c3"
+        >
+           Order: 
+          1
+        </h3>
+        <h3
+          class="c3"
+        >
+          Height: 
+          0.7 meters
+        </h3>
+        <h3
+          class="c3"
+        >
+          Weight: 
+          69 Kg
+        </h3>
+      </div>
+      <img
+        class="c4"
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/undefined.png"
+      />
+    </div>
+    <div
+      class="c5"
+    >
+      <a
+        class="c6"
+        href="/pokemon/1/"
+      >
+        <li
+          class="c7"
+        >
+          <div
+            class="c8 reduced"
+          >
+            <img
+              class="c4"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+            />
+            <p
+              class="c9"
+            >
+              ivisaur
+            </p>
+          </div>
+        </li>
+      </a>
+    </div>
+  </div>
+  <div
+    class="c10"
+  >
+    <div
+      class="c11"
+    >
+      <div
+        class="c12"
+      >
+        <li
+          class="c13 selected"
+        >
+          razor-wind
+        </li>
+      </div>
+    </div>
+    <div
+      class="c11"
+    >
+      <section
+        class="c14"
+      >
+        <div
+          class="c15"
+        >
+          <h4
+            class="c16"
+          >
+            razor-wind
+          </h4>
+          <ul
+            class="c17"
+          >
+            <li
+              class="c18"
+            >
+              Power : 
+              80
+            </li>
+            <li
+              class="c18"
+            >
+              Accuracy : 
+              10
+            </li>
+            <li
+              class="c18"
+            >
+              PP : 
+              10
+            </li>
+          </ul>
+        </div>
+        <div
+          class=""
+        />
+      </section>
+      <div
+        class="c19"
+      >
+        <button
+          class="c20"
+        >
+          <i
+            class="fas fa-caret-up"
+          />
+        </button>
+        <button
+          class="c20"
+        >
+          <i
+            class="fas fa-caret-down"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      class="c21"
+    >
+      <div
+        class="c22"
+      >
+        <div
+          class="sc-fzokOt c23 poison"
+        >
+          poison
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c0"
+  >
+    <div
+      class="c24"
+    >
+      <p
+        class="c25"
+      >
+        speed.............45
+      </p>
+    </div>
+    <div
+      class="c26"
+    >
+      <ul
+        class="c27 c28"
+      >
+        <li
+          class="c29 c30"
+        />
+        <li
+          class="c29 c30"
+        />
+        <li
+          class="c29 c30"
+        />
+      </ul>
+    </div>
+    <div
+      class="c31"
+    >
+      <h4
+        class="c32"
+      >
+         Abilities: 
+      </h4>
+      <p
+        class="c33"
+      >
+        chlorophyll
+      </p>
+    </div>
+  </div>
+</div>
+`;

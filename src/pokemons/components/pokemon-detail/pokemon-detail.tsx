@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PokemonDetailContainerProps } from "./pokemons-detail.container";
-import { StyledLink } from "../../pokemons";
 import { PokemonListItem } from "../pokemon-list-item/pokemon-list-item";
 import styled from "../../../styled-components";
 import { PokemonMoveDisplayer } from "../move-displayer/moves-displayer";
 import { PokemonMove } from "../../../services/pokemon.service";
 import { PokemonImage } from "../pokemon-image/pokemon-image";
 import { PokemonTypeDisplayer } from "../type-displayer/type-displayer";
+import { PokemonStatsDisplayer } from "../stats-displayer/stats-displayer";
+import { PokemonDescriptionDisplayer } from "../description-displayer/description-displayer";
+import { getFlavorDescriptionText } from "../../../utils/getDescriptionByLanguage";
+import { PokemonAbilitiesDisplayer } from "../ability-displayer/ability-displayer";
+import { StyledLink } from "../styled-link/styled-link";
+import { PokemonDetailContainerProps } from "./pokemons-detail.container";
 
-export const PokemonDetail = ({
+export const PokemonDetailView = ({
   getPokemonDetail,
   pokemon,
   loading,
@@ -24,6 +28,11 @@ export const PokemonDetail = ({
   const [selectedMoveIndex, setSelectedMoveIndex] = useState(0);
   const pokemonImageId = id + "";
   const types = pokemon?.types;
+  const pokemonStats = pokemon?.stats;
+  const pokemonDescription =
+    pokemon?.species && getFlavorDescriptionText(pokemon?.species, "en");
+  const pokemonAbilities = pokemon?.abilities;
+  const pokemonMovesList = pokemon?.moves;
   useEffect(() => {
     if (id && !loading) {
       selectPokemon(id);
@@ -34,10 +43,23 @@ export const PokemonDetail = ({
   useEffect(() => {
     if (pokemon) {
       const moveName = pokemon.moves[0].move.name;
-      selectMove(moveName);
-      getPokemonMove(moveName);
+      selectMoveByName(moveName);
     }
   }, [pokemon]);
+
+  const selectMoveByName = (moveName: string) => {
+    selectMove(moveName);
+    getPokemonMove(moveName);
+  };
+
+  const selectMoveHandlerList = (moveName: string) => {
+    if (pokemon) {
+      const moveIndex = pokemon.moves.findIndex((move: PokemonMove) => {
+        return move.move.name === moveName;
+      });
+      setSelectedMoveIndex(moveIndex);
+    }
+  };
 
   useEffect(() => {
     if (pokemon) {
@@ -47,8 +69,7 @@ export const PokemonDetail = ({
         (pokeMove: PokemonMove) => pokeMove.move.name === move.move.name
       );
       if (pokeMove) {
-        selectMove(pokeMove.move.name);
-        getPokemonMove(pokeMove.move.name);
+        selectMoveByName(pokeMove.move.name);
       }
     }
   }, [selectedMoveIndex]);
@@ -66,10 +87,12 @@ export const PokemonDetail = ({
           <DisplayerWrapper>
             <InfoDisplayer>
               <TextDisplayer>
-                <TextParagraph> {pokemon.name}</TextParagraph>
-                <TextParagraph>{`${pokemon?.height /
-                  10} meters`}</TextParagraph>
-                <TextParagraph>{`${pokemon?.weight} Kg`}</TextParagraph>
+                <TextParagraph>Name: {pokemon.name}</TextParagraph>
+                <TextParagraph> Order: {pokemon.order}</TextParagraph>
+                <TextParagraph>
+                  Height: {`${pokemon?.height / 10} meters`}
+                </TextParagraph>
+                <TextParagraph>Weight: {`${pokemon?.weight} Kg`}</TextParagraph>
               </TextDisplayer>
               <PokemonImage id={pokemonImageId} />
             </InfoDisplayer>
@@ -88,6 +111,15 @@ export const PokemonDetail = ({
           </DisplayerWrapper>
           <MoveAndTypeSection>
             <MoveSectionDisplayer>
+              <PokemonMoveListContainer>
+                <PokemonMovesListDisplayer
+                  selectedMove={selectedMove}
+                  selectMoveHandler={selectMoveHandlerList}
+                  pokemonMoves={pokemonMovesList}
+                />
+              </PokemonMoveListContainer>
+            </MoveSectionDisplayer>
+            <MoveSectionDisplayer>
               <PokemonMoveDisplayer
                 handleMoveNext={handleMoveNext}
                 handleMovePrevious={handleMovePrevious}
@@ -95,22 +127,37 @@ export const PokemonDetail = ({
                 loadingMoves={loadingMoves}
               />
             </MoveSectionDisplayer>
-            <TypeSectionDisplayer>
-              {types && <PokemonTypeDisplayer types={types} />}
-            </TypeSectionDisplayer>
+            {types && (
+              <TypeSectionDisplayer>
+                {types && <PokemonTypeDisplayer types={types} />}
+              </TypeSectionDisplayer>
+            )}
           </MoveAndTypeSection>
+
+          <DisplayerWrapper>
+            {pokemonStats && <PokemonStatsDisplayer stats={pokemonStats} />}
+            {pokemonDescription && (
+              <PokemonDescriptionDisplayer
+                loading={loading}
+                description={pokemonDescription}
+              />
+            )}
+            {pokemonAbilities && (
+              <PokemonAbilitiesDisplayer abilities={pokemonAbilities} />
+            )}
+          </DisplayerWrapper>
         </>
       )}
     </>
   );
 };
+
 const PokemonEvolutionList = styled.div`
   display: flex;
   flex-direction: column;
   margin: 0px;
   padding: 0px;
   margin: ${props => props.theme.spacing.xs};
-
   @media ${props => props.theme.media.lg} {
     flex-direction: row;
   }
@@ -137,6 +184,7 @@ const MoveSectionDisplayer = styled(DisplayerWrapper)`
     margin: 0px;
   }
 `;
+
 const TypeSectionDisplayer = styled(MoveSectionDisplayer)`
   padding: 0px;
 `;
@@ -161,3 +209,49 @@ const TextParagraph = styled.h3`
   text-transform: capitalize;
   margin: ${props => props.theme.spacing.xs};
 `;
+const PokemonMoveListContainer = styled(InfoDisplayer)`
+  flex-direction: column;
+  overflow: auto;
+`;
+const PokemonMoveListItem = styled.li`
+  font-weight: bold;
+  display: flex;
+  padding: 7px;
+  cursor: pointer;
+  &.selected {
+    display: list-item;
+  }
+`;
+
+interface PokemonMovesListDisplayerProps {
+  pokemonMoves?: PokemonMove[];
+  selectMoveHandler: (moveName: string) => void;
+  selectedMove: PokemonMove;
+}
+// TODO this should be extracted from here
+const PokemonMovesListDisplayer = ({
+  pokemonMoves,
+  selectMoveHandler,
+  selectedMove
+}: PokemonMovesListDisplayerProps) => {
+  return (
+    <>
+      {pokemonMoves &&
+        pokemonMoves.map((pokemonMove: PokemonMove, key) => {
+          const isSelectedClass =
+            selectedMove && selectedMove.name === pokemonMove.move.name
+              ? "selected"
+              : "";
+          return (
+            <PokemonMoveListItem
+              className={isSelectedClass}
+              key={key}
+              onClick={() => selectMoveHandler(pokemonMove.move.name)}
+            >
+              {pokemonMove.move.name}
+            </PokemonMoveListItem>
+          );
+        })}
+    </>
+  );
+};
