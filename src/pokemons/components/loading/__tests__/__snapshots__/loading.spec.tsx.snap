@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Component should render properly 1`] = `
+.c2 {
+  width: 4px;
+  height: 4px;
+  background-color: black;
+  border-radius: 1px;
+  margin: 0px 2px;
+  list-style-type: none;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  -webkit-animation: fZpxSO 1s infinite ease-in-out both;
+  animation: fZpxSO 1s infinite ease-in-out both;
+}
+
+.c0 {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 0px;
+}
+
+.c0 .c1:nth-child(1) {
+  -webkit-animation-delay: -0.35s;
+  animation-delay: -0.35s;
+}
+
+.c0 .c1:nth-child(2) {
+  -webkit-animation-delay: -0.2s;
+  animation-delay: -0.2s;
+}
+
+<div>
+  <ul
+    class="c0"
+  >
+    <li
+      class="c1 c2"
+    />
+    <li
+      class="c1 c2"
+    />
+    <li
+      class="c1 c2"
+    />
+  </ul>
+</div>
+`;
