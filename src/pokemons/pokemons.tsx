@@ -51,7 +51,10 @@ export const Pokemons = ({
           <Left>
             {error && <h2> {error}</h2>}
             <InputContainer>
-              <InputSearch onChange={onChangeHandler} />
+              <InputSearch
+                placeholder="Search name"
+                onChange={onChangeHandler}
+              />
             </InputContainer>
             <PokemonList ref={scrollRef} onScroll={handleScroll}>
               {pokemonsFiltered &&
@@ -61,7 +64,7 @@ export const Pokemons = ({
                       <PokemonListItem
                         pokemonSelected={pokemonSelected}
                         name={name}
-                        id={id}
+                        id={id.toString()}
                       />
                     </StyledLink>
                   );
@@ -109,7 +112,7 @@ const Right = styled.section`
   }
 `;
 const PokemonList = styled.ul`
-  height: 55vh;
+  height: 40vh;
   overflow: auto;
   padding: 0px;
   border: 5px double;
