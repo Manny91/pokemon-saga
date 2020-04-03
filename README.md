@@ -27,15 +27,38 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Things UI can do:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- On first render it should see the list of the first 20 pokemons loaded by PokeAPI and you can scroll down in order to load more.
+- You can Select a pokemon on the pokemon list in order to see the details of it.
+- Once the Pokemon Detail has loaded you can see the information about its name, weight, height, order, evolutions, stats, abilities, description, types and moves.
+- You can either scroll through the list of moves and select any element of that list that it would show the detail of the move on the move detail screen. You can also navigate through the move detail screen.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+---
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Live demo
+
+Click
+[here](https://master.d3ltotozp1lkdy.amplifyapp.com/)
+
+---
+
+## Things to improve
+
+Due the time limitation there are a list of things I would improve.
+
+- Loading and error messaging
+
+- Testing and test coverage including adding automation tests
+
+- Sort functionality and language would be an easy and a quick change.
+- Improve UI as this one was inspired in my previous project
+  [pokereact](https://github.com/Manny91/pokereact) ([pokereact live demo](https://master.d34nfmwcg7jwfz.amplifyapp.com/))
+- Make it work better on smaller devices as the current one works but design its not the best.
+
+- Add [storybook](https://storybook.js.org/docs/guides/guide-react/) to the project.
 
 ## Learn More
 
