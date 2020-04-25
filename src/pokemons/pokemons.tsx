@@ -15,7 +15,7 @@ export const Pokemons = ({
   getMorePokemons,
   error,
   loading,
-  loadingDetail
+  loadingDetail,
 }: PokemonContainerProps) => {
   const scrollRef = React.useRef<HTMLUListElement>(null);
   const isLoading = loading || loadingDetail;
@@ -42,7 +42,7 @@ export const Pokemons = ({
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const valueTyped = event.target.value;
     const newPokemonsFiltered = pokemons.filter(
-      pokemons => pokemons.name.indexOf(valueTyped) !== -1
+      (pokemons) => pokemons.name.indexOf(valueTyped) !== -1
     );
     setPokemonsFiltered(newPokemonsFiltered);
   };
@@ -59,7 +59,11 @@ export const Pokemons = ({
                 onChange={onChangeHandler}
               />
             </InputContainer>
-            <PokemonList ref={scrollRef} onScroll={handleScroll}>
+            <PokemonList
+              data-testid="pokemon-list"
+              ref={scrollRef}
+              onScroll={handleScroll}
+            >
               {pokemonsFiltered &&
                 pokemonsFiltered.map(({ name, id }) => {
                   return (
@@ -88,7 +92,7 @@ export const Pokemons = ({
 const PokemonsPage = styled.div`
   display: flex;
   border-radius: 15px;
-  background-color: ${props => props.theme.colors.red};
+  background-color: ${(props) => props.theme.colors.red};
   border: 10px double;
   flex-direction: column;
   font-family: "VT323";
@@ -97,19 +101,19 @@ const PokemonsPage = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  @media ${props => props.theme.media.md} {
+  @media ${(props) => props.theme.media.md} {
     flex-direction: row;
   }
 `;
 const Left = styled.section`
   width: 100%;
-  @media ${props => props.theme.media.md} {
+  @media ${(props) => props.theme.media.md} {
     width: 330px;
   }
 `;
 const Right = styled.section`
-  padding: 0px ${props => props.theme.spacing.sm};
-  @media ${props => props.theme.media.md} {
+  padding: 0px ${(props) => props.theme.spacing.sm};
+  @media ${(props) => props.theme.media.md} {
     border-left: 10px double;
     width: 100%;
   }
@@ -119,24 +123,24 @@ const PokemonList = styled.ul`
   overflow: auto;
   padding: 0px;
   border: 5px double;
-  margin: ${props => props.theme.spacing.sm};
-  @media ${props => props.theme.media.md} {
+  margin: ${(props) => props.theme.spacing.sm};
+  @media ${(props) => props.theme.media.md} {
     height: 500px;
   }
 `;
 
 const InputContainer = styled.div`
-  margin: ${props => props.theme.spacing.sm};
+  margin: ${(props) => props.theme.spacing.sm};
   padding: 0px;
   border: 5px double;
   margin: 10px;
   display: flex;
 `;
 const InputSearch = styled.input`
-  background-color: ${props => props.theme.colors.greenScreen};
+  background-color: ${(props) => props.theme.colors.greenScreen};
   width: 100%;
   height: 30px;
   font-size: 20px;
   font-family: "VT323";
-  border-color: ${props => props.theme.colors.greenBorder};
+  border-color: ${(props) => props.theme.colors.greenBorder};
 `;

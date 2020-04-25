@@ -21,7 +21,7 @@ export const PokemonDetailView = ({
   getPokemonMove,
   selectMove,
   selectedMove,
-  loadingMoves
+  loadingMoves,
 }: PokemonDetailContainerProps) => {
   const { id } = useParams();
   const evolutions = pokemon?.species.evolutions;
@@ -34,7 +34,7 @@ export const PokemonDetailView = ({
   const pokemonAbilities = pokemon?.abilities;
   const pokemonMovesList = pokemon?.moves;
   useEffect(() => {
-    if (id && !loading) {
+    if (id) {
       selectPokemon(id);
       getPokemonDetail(id);
     }
@@ -157,18 +157,18 @@ const PokemonEvolutionList = styled.div`
   flex-direction: column;
   margin: 0px;
   padding: 0px;
-  margin: ${props => props.theme.spacing.xs};
-  @media ${props => props.theme.media.lg} {
+  margin: ${(props) => props.theme.spacing.xs};
+  @media ${(props) => props.theme.media.lg} {
     flex-direction: row;
   }
 `;
 const DisplayerWrapper = styled.div`
-  padding: ${props => props.theme.spacing.xs};
+  padding: ${(props) => props.theme.spacing.xs};
   display: flex;
   flex-direction: column;
-  border: groove ${props => props.theme.colors.greenDarkBorder} 3px;
-  @media ${props => props.theme.media.md} {
-    margin: ${props => props.theme.spacing.sm};
+  border: groove ${(props) => props.theme.colors.greenDarkBorder} 3px;
+  @media ${(props) => props.theme.media.md} {
+    margin: ${(props) => props.theme.spacing.sm};
     flex-direction: row;
   }
 `;
@@ -178,7 +178,7 @@ const MoveSectionDisplayer = styled(DisplayerWrapper)`
   flex-direction: row;
   width: 100%;
   border: none;
-  @media ${props => props.theme.media.md} {
+  @media ${(props) => props.theme.media.md} {
     width: 50%;
     padding: 0px;
     margin: 0px;
@@ -195,19 +195,19 @@ const TextDisplayer = styled.div`
   width: 45%;
 `;
 const InfoDisplayer = styled.div`
-  padding: ${props => props.theme.spacing.sm};
-  border: inset ${props => props.theme.colors.greenBorder} 3px;
+  padding: ${(props) => props.theme.spacing.sm};
+  border: inset ${(props) => props.theme.colors.greenBorder} 3px;
   display: flex;
-  background: ${props => props.theme.colors.greenScreenBackground};
-  @media ${props => props.theme.media.md} {
+  background: ${(props) => props.theme.colors.greenScreenBackground};
+  @media ${(props) => props.theme.media.md} {
     width: 100%;
   }
-  margin: ${props => props.theme.spacing.xs};
+  margin: ${(props) => props.theme.spacing.xs};
 `;
 
 const TextParagraph = styled.h3`
   text-transform: capitalize;
-  margin: ${props => props.theme.spacing.xs};
+  margin: ${(props) => props.theme.spacing.xs};
 `;
 const PokemonMoveListContainer = styled(InfoDisplayer)`
   flex-direction: column;
@@ -217,7 +217,7 @@ const PokemonMoveListContainer = styled(InfoDisplayer)`
 const PokemonMoveListItem = styled.li`
   font-weight: bold;
   display: flex;
-  padding: ${props => props.theme.spacing.sm};
+  padding: ${(props) => props.theme.spacing.sm};
   cursor: pointer;
   &.selected {
     display: list-item;
@@ -233,7 +233,7 @@ interface PokemonMovesListDisplayerProps {
 const PokemonMovesListDisplayer = ({
   pokemonMoves,
   selectMoveHandler,
-  selectedMove
+  selectedMove,
 }: PokemonMovesListDisplayerProps) => {
   return (
     <>
