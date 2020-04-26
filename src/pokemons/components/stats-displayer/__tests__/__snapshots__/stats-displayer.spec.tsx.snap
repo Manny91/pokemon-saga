@@ -20,6 +20,7 @@ exports[`PokemonStatsDisplayer Component should render properly 1`] = `
   background-color: #A5CD53;
   padding: 15px 20px;
   border-radius: 3px;
+  margin: 5px;
   border: inset #9aa28b 3px;
 }
 

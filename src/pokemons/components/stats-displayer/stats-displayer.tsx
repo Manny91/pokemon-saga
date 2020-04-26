@@ -38,10 +38,11 @@ const StatsWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
-  background-color: ${props => props.theme.colors.greenScreen};
+  background-color: ${(props) => props.theme.colors.greenScreen};
   padding: 15px 20px;
   border-radius: 3px;
-  border: inset ${props => props.theme.colors.greenBorder} 3px;
+  margin: ${(props) => props.theme.spacing.xs};
+  border: inset ${(props) => props.theme.colors.greenBorder} 3px;
 `;
 
 const PokeStatContainer = styled.p`

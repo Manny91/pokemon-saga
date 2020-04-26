@@ -7,7 +7,7 @@ interface AbilitiesDisplayerProps {
 }
 
 export const PokemonAbilitiesDisplayer = ({
-  abilities
+  abilities,
 }: AbilitiesDisplayerProps) => {
   const abilitiesFlatted = flatAbilities(abilities);
   return (
@@ -25,7 +25,7 @@ export const PokemonAbilitiesDisplayer = ({
 };
 
 function flatAbilities(abilities: PokemonAbility[]): Ability[] {
-  const abilityFlat = abilities.map(ability => {
+  const abilityFlat = abilities.map((ability) => {
     return ability.ability;
   });
   return abilityFlat;
@@ -35,12 +35,13 @@ const AbilityWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${props => props.theme.colors.greenScreen};
+  background-color: ${(props) => props.theme.colors.greenScreen};
   padding: 15px 20px;
   border-radius: 3px;
   flex-grow: 1;
   min-width: 120px;
-  border: inset ${props => props.theme.colors.greenBorder} 3px;
+  margin: ${(props) => props.theme.spacing.xs};
+  border: inset ${(props) => props.theme.colors.greenBorder} 3px;
 `;
 
 const PokeAbilityContainer = styled.p`

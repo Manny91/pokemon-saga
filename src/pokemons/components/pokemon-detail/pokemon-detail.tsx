@@ -111,13 +111,12 @@ export const PokemonDetailView = ({
           </DisplayerWrapper>
           <MoveAndTypeSection>
             <MoveSectionDisplayer>
-              <PokemonMoveListContainer>
-                <PokemonMovesListDisplayer
-                  selectedMove={selectedMove}
-                  selectMoveHandler={selectMoveHandlerList}
-                  pokemonMoves={pokemonMovesList}
+              {pokemonDescription && (
+                <PokemonDescriptionDisplayer
+                  loading={loading}
+                  description={pokemonDescription}
                 />
-              </PokemonMoveListContainer>
+              )}
             </MoveSectionDisplayer>
             <MoveSectionDisplayer>
               <PokemonMoveDisplayer
@@ -136,15 +135,17 @@ export const PokemonDetailView = ({
 
           <DisplayerWrapper>
             {pokemonStats && <PokemonStatsDisplayer stats={pokemonStats} />}
-            {pokemonDescription && (
-              <PokemonDescriptionDisplayer
-                loading={loading}
-                description={pokemonDescription}
-              />
-            )}
+
             {pokemonAbilities && (
               <PokemonAbilitiesDisplayer abilities={pokemonAbilities} />
             )}
+            <PokemonMoveListContainer>
+              <PokemonMovesListDisplayer
+                selectedMove={selectedMove}
+                selectMoveHandler={selectMoveHandlerList}
+                pokemonMoves={pokemonMovesList}
+              />
+            </PokemonMoveListContainer>
           </DisplayerWrapper>
         </>
       )}
@@ -167,6 +168,7 @@ const DisplayerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   border: groove ${(props) => props.theme.colors.greenDarkBorder} 3px;
+
   @media ${(props) => props.theme.media.md} {
     margin: ${(props) => props.theme.spacing.sm};
     flex-direction: row;
@@ -212,15 +214,21 @@ const TextParagraph = styled.h3`
 const PokemonMoveListContainer = styled(InfoDisplayer)`
   flex-direction: column;
   overflow: auto;
-  width: 100%;
+  margin: 0px;
+  max-height: 250px;
+  padding: 0px;
+  margin: ${(props) => props.theme.spacing.xs};
+  background: ${(props) => props.theme.colors.greenScreen};
 `;
 const PokemonMoveListItem = styled.li`
   font-weight: bold;
   display: flex;
   padding: ${(props) => props.theme.spacing.sm};
+  border-bottom: 1px solid ${(props) => props.theme.colors.grey};
   cursor: pointer;
+  text-transform: capitalize;
   &.selected {
-    display: list-item;
+    background-color: ${(props) => props.theme.colors.lighterGreen};
   }
 `;
 

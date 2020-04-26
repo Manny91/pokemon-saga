@@ -4,22 +4,23 @@ import React from "react";
 
 export const PokemonDescriptionDisplayer = ({
   description,
-  loading
+  loading,
 }: PokemonDetails) => {
   return (
-    <StatScreen>
+    <DescriptionDisplay>
       {!loading && <Description>{description}</Description>}
       {loading && <Loading />}
-    </StatScreen>
+    </DescriptionDisplay>
   );
 };
 
-const StatScreen = styled.div`
+const DescriptionDisplay = styled.div`
   border: 1px solid;
-  background-color: ${props => props.theme.colors.greenScreen};
-  padding: 5px;
+  background-color: ${(props) => props.theme.colors.greenScreen};
+  padding: 7px;
   border-radius: 3px;
-  border: inset ${props => props.theme.colors.greenBorder} 3px;
+
+  border: inset ${(props) => props.theme.colors.greenBorder} 3px;
   ${LoadingWrapper} {
     margin: 7px;
   }
@@ -29,5 +30,7 @@ interface PokemonDetails {
   loading: boolean;
 }
 const Description = styled.h4`
-  margin: 7px;
+  margin: 0px;
+  overflow: scroll;
+  height: 100%;
 `;

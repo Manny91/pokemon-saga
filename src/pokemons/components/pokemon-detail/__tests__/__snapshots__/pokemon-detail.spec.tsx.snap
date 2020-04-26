@@ -60,7 +60,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   margin-left: 10px;
 }
 
-.c30 {
+.c16 {
   width: 4px;
   height: 4px;
   background-color: black;
@@ -72,7 +72,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   animation: fZpxSO 1s infinite ease-in-out both;
 }
 
-.c28 {
+.c14 {
   height: 100%;
   width: 100%;
   display: -webkit-box;
@@ -85,17 +85,17 @@ exports[`PokemonDetail Component should render properly 1`] = `
   padding: 0px;
 }
 
-.c28 .c29:nth-child(1) {
+.c14 .c15:nth-child(1) {
   -webkit-animation-delay: -0.35s;
   animation-delay: -0.35s;
 }
 
-.c28 .c29:nth-child(2) {
+.c14 .c15:nth-child(2) {
   -webkit-animation-delay: -0.2s;
   animation-delay: -0.2s;
 }
 
-.c14 {
+.c17 {
   background-color: #A5CD53;
   padding: 10px 20px;
   border-radius: 3px;
@@ -103,12 +103,12 @@ exports[`PokemonDetail Component should render properly 1`] = `
   width: calc(100% - 100px);
 }
 
-.c16 {
+.c19 {
   text-transform: capitalize;
   margin: 5px 0px;
 }
 
-.c17 {
+.c20 {
   margin: 5px;
   border-top: 2px solid black;
   list-style-type: none;
@@ -116,11 +116,11 @@ exports[`PokemonDetail Component should render properly 1`] = `
   padding: 0;
 }
 
-.c18 {
+.c21 {
   font-weight: bold;
 }
 
-.c15 {
+.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,7 +130,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   flex-direction: column;
 }
 
-.c19 {
+.c22 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -140,7 +140,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   flex-direction: column;
 }
 
-.c20 {
+.c23 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -148,13 +148,13 @@ exports[`PokemonDetail Component should render properly 1`] = `
   margin: 5px;
 }
 
-.c22 {
+.c25 {
   background: linear-gradient(14deg,#afafaf 50%,#ffffff 80%,#afafaf 90%);
   border: groove #4e4e4e 3px;
   width: 100%;
 }
 
-.c23 {
+.c26 {
   height: 35px;
   text-transform: uppercase;
   text-align: center;
@@ -180,87 +180,87 @@ exports[`PokemonDetail Component should render properly 1`] = `
   margin: 3px;
 }
 
-.c23.normal {
+.c26.normal {
   background: #bfbfbf;
 }
 
-.c23.fighting {
+.c26.fighting {
   background: #d87c58;
 }
 
-.c23.flying {
+.c26.flying {
   background: #999ade;
 }
 
-.c23.poison {
+.c26.poison {
   background: #925192;
 }
 
-.c23.ground {
+.c26.ground {
   background: #dea761;
 }
 
-.c23.rock {
+.c26.rock {
   background: #897864;
 }
 
-.c23.bug {
+.c26.bug {
   background: #b1c967;
 }
 
-.c23.ghost {
+.c26.ghost {
   background: #c195dc;
 }
 
-.c23.steel {
+.c26.steel {
   background: #49769c;
 }
 
-.c23.fire {
+.c26.fire {
   background: #cf1414;
 }
 
-.c23.water {
+.c26.water {
   background: #1689de;
 }
 
-.c23.grass {
+.c26.grass {
   background: #47a047;
 }
 
-.c23.electric {
+.c26.electric {
   background: #e6b700;
 }
 
-.c23.psychic {
+.c26.psychic {
   background: #fa43b8;
 }
 
-.c23.ice {
+.c26.ice {
   background: #98c3de;
 }
 
-.c23.dragon {
+.c26.dragon {
   background: #89315d;
 }
 
-.c23.dark {
+.c26.dark {
   background: #282433;
 }
 
-.c23.fairy {
+.c26.fairy {
   background: #dca0ce;
 }
 
-.c23.unknown {
+.c26.unknown {
   background: #545454;
 }
 
-.c23.shadow {
+.c26.shadow {
   background: #364163;
 }
 
-.c24 {
+.c27 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -279,28 +279,29 @@ exports[`PokemonDetail Component should render properly 1`] = `
   background-color: #A5CD53;
   padding: 15px 20px;
   border-radius: 3px;
+  margin: 5px;
   border: inset #9aa28b 3px;
 }
 
-.c25 {
+.c28 {
   margin: 5px 0px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.c26 {
+.c12 {
   border: 1px solid;
   background-color: #A5CD53;
-  padding: 5px;
+  padding: 7px;
   border-radius: 3px;
   border: inset #9aa28b 3px;
 }
 
-.c26 .c27 {
+.c12 .c13 {
   margin: 7px;
 }
 
-.c31 {
+.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -320,16 +321,17 @@ exports[`PokemonDetail Component should render properly 1`] = `
   -ms-flex-positive: 1;
   flex-grow: 1;
   min-width: 120px;
+  margin: 5px;
   border: inset #9aa28b 3px;
 }
 
-.c33 {
+.c31 {
   margin: 5px 0px;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.c32 {
+.c30 {
   text-transform: capitalize;
 }
 
@@ -393,7 +395,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   border: none;
 }
 
-.c21 {
+.c24 {
   padding: 5px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -439,7 +441,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
   margin: 5px;
 }
 
-.c12 {
+.c32 {
   padding: 10px;
   border: inset #9aa28b 3px;
   display: -webkit-box;
@@ -452,21 +454,27 @@ exports[`PokemonDetail Component should render properly 1`] = `
   -ms-flex-direction: column;
   flex-direction: column;
   overflow: auto;
-  width: 100%;
+  margin: 0px;
+  max-height: 250px;
+  padding: 0px;
+  margin: 5px;
+  background: #A5CD53;
 }
 
-.c13 {
+.c33 {
   font-weight: bold;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   padding: 10px;
+  border-bottom: 1px solid grey;
   cursor: pointer;
+  text-transform: capitalize;
 }
 
-.c13.selected {
-  display: list-item;
+.c33.selected {
+  background-color: #CBEE84;
 }
 
 @media (min-width:992px) {
@@ -522,7 +530,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
 }
 
 @media (min-width:768px) {
-  .c21 {
+  .c24 {
     margin: 10px;
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
@@ -531,7 +539,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
 }
 
 @media (min-width:768px) {
-  .c21 {
+  .c24 {
     width: 50%;
     padding: 0px;
     margin: 0px;
@@ -545,7 +553,7 @@ exports[`PokemonDetail Component should render properly 1`] = `
 }
 
 @media (min-width:768px) {
-  .c12 {
+  .c32 {
     width: 100%;
   }
 }
@@ -626,44 +634,52 @@ exports[`PokemonDetail Component should render properly 1`] = `
       <div
         class="c12"
       >
-        <li
-          class="c13 selected"
+        <ul
+          class="c13 c14"
         >
-          razor-wind
-        </li>
+          <li
+            class="c15 c16"
+          />
+          <li
+            class="c15 c16"
+          />
+          <li
+            class="c15 c16"
+          />
+        </ul>
       </div>
     </div>
     <div
       class="c11"
     >
       <section
-        class="c14"
+        class="c17"
       >
         <div
-          class="c15"
+          class="c18"
         >
           <h4
-            class="c16"
+            class="c19"
           >
             razor-wind
           </h4>
           <ul
-            class="c17"
+            class="c20"
           >
             <li
-              class="c18"
+              class="c21"
             >
               Power : 
               80
             </li>
             <li
-              class="c18"
+              class="c21"
             >
               Accuracy : 
               10
             </li>
             <li
-              class="c18"
+              class="c21"
             >
               PP : 
               10
@@ -675,17 +691,17 @@ exports[`PokemonDetail Component should render properly 1`] = `
         />
       </section>
       <div
-        class="c19"
+        class="c22"
       >
         <button
-          class="c20"
+          class="c23"
         >
           <i
             class="fas fa-caret-up"
           />
         </button>
         <button
-          class="c20"
+          class="c23"
         >
           <i
             class="fas fa-caret-down"
@@ -694,13 +710,13 @@ exports[`PokemonDetail Component should render properly 1`] = `
       </div>
     </div>
     <div
-      class="c21"
+      class="c24"
     >
       <div
-        class="c22"
+        class="c25"
       >
         <div
-          class="sc-fzokOt c23 poison"
+          class="sc-fzokOt c26 poison"
         >
           poison
         </div>
@@ -711,44 +727,36 @@ exports[`PokemonDetail Component should render properly 1`] = `
     class="c0"
   >
     <div
-      class="c24"
+      class="c27"
     >
       <p
-        class="c25"
+        class="c28"
       >
         speed.............45
       </p>
     </div>
     <div
-      class="c26"
-    >
-      <ul
-        class="c27 c28"
-      >
-        <li
-          class="c29 c30"
-        />
-        <li
-          class="c29 c30"
-        />
-        <li
-          class="c29 c30"
-        />
-      </ul>
-    </div>
-    <div
-      class="c31"
+      class="c29"
     >
       <h4
-        class="c32"
+        class="c30"
       >
          Abilities: 
       </h4>
       <p
-        class="c33"
+        class="c31"
       >
         chlorophyll
       </p>
+    </div>
+    <div
+      class="c32"
+    >
+      <li
+        class="c33 selected"
+      >
+        razor-wind
+      </li>
     </div>
   </div>
 </div>
